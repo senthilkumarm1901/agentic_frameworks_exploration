@@ -1,0 +1,22 @@
+[workspace]
+members = [
+    "_shared",
+    "_shared_mcp",
+    "foundation/augmented_llm",
+    "workflow/prompt_chaining",
+    "workflow/routing",
+    "workflow/parallelization",
+    "workflow/orchestrator_workers",
+    "workflow/evaluator_optimizer",
+    "agent/customer_support",
+    "agent/coding_agent",
+]
+resolver = "2"
+
+[workspace.dependencies]
+rig-core = "0.6"
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
