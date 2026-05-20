@@ -57,6 +57,11 @@ uv run pytest -m integration         # integration (requires Ollama)
 
 ---
 
+## Langgraph Agents
+
+_Coming soon._
+
+---
 ## Strands Agents
 
 _Coming soon._
