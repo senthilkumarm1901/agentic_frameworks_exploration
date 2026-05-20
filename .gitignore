@@ -1,0 +1,40 @@
+# User-requested ignores
+.genie/
+.github/
+.docs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+.env
+.mypy_cache/
+.pytest_cache/
+coverage.*
+.cache/
+*.pyo
+*.pyd
+
+# Rust
+target/
+Cargo.lock
+*.rs.bk
+
+# macOS
+.DS_Store
+
+# VSCode/IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Misc
+*.log
