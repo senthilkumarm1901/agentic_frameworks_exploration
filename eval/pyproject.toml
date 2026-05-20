@@ -1,0 +1,17 @@
+[project]
+name = "eval-harness"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "shared",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+shared = { path = "../_shared", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/eval"]
