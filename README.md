@@ -19,4 +19,4 @@ Comparing LLM agent patterns across frameworks (LangGraph, Strands, Rig).
 | `langgraph_exploration/` | Learning LangGraph fundamentals — graphs & agents | [README](./langgraph_exploration/README.md) |
 | `langgraph/` | Structured agent patterns (workflow, foundation, agent) | [README](./langgraph/README.md) |
 | `strands/` | Strands agents | _Coming soon_ |
-| `rig/` | Rig (Rust) agents | _Coming soon_ |
+| `hermes` | Hermes agents | _Coming soon_ |
