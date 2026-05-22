@@ -1,6 +1,6 @@
 # Agentic Frameworks Exploration
 
-Comparing LLM agent patterns across frameworks (LangGraph, Strands, Rig).
+Comparing LLM agent patterns across frameworks (LangGraph, Strands, Hermes).
 
 ## Prerequisites
 
