@@ -1,0 +1,222 @@
+{
+  "australia": {
+    "name": "Australia",
+    "iso3": "AUS",
+    "gdp_usd": 1734451264655.6,
+    "gdp_trillion": 1.73,
+    "population": 26659922,
+    "population_million": 26.7,
+    "area_sq_km": 7692020,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "brazil": {
+    "name": "Brazil",
+    "iso3": "BRA",
+    "gdp_usd": 2191131869706.02,
+    "gdp_trillion": 2.19,
+    "population": 211140729,
+    "population_million": 211.1,
+    "area_sq_km": 8358140,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "canada": {
+    "name": "Canada",
+    "iso3": "CAN",
+    "gdp_usd": 2173339670064.33,
+    "gdp_trillion": 2.17,
+    "population": 40083484,
+    "population_million": 40.1,
+    "area_sq_km": 8788700,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "china": {
+    "name": "China",
+    "iso3": "CHN",
+    "gdp_usd": 18270356654533.2,
+    "gdp_trillion": 18.27,
+    "population": 1410710000,
+    "population_million": 1410.7,
+    "area_sq_km": 9388210,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "germany": {
+    "name": "Germany",
+    "iso3": "DEU",
+    "gdp_usd": 4562207532490.28,
+    "gdp_trillion": 4.56,
+    "population": 83287273,
+    "population_million": 83.3,
+    "area_sq_km": 349430,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "egypt,_arab_rep.": {
+    "name": "Egypt, Arab Rep.",
+    "iso3": "EGY",
+    "gdp_usd": 395926075163.006,
+    "gdp_trillion": 0.4,
+    "population": 114535772,
+    "population_million": 114.5,
+    "area_sq_km": 995450,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "spain": {
+    "name": "Spain",
+    "iso3": "ESP",
+    "gdp_usd": 1619481980719.64,
+    "gdp_trillion": 1.62,
+    "population": 48352528,
+    "population_million": 48.4,
+    "area_sq_km": 499697,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "france": {
+    "name": "France",
+    "iso3": "FRA",
+    "gdp_usd": 3056250648138.29,
+    "gdp_trillion": 3.06,
+    "population": 68372286,
+    "population_million": 68.4,
+    "area_sq_km": 538950,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "united_kingdom": {
+    "name": "United Kingdom",
+    "iso3": "GBR",
+    "gdp_usd": 3420796653789.08,
+    "gdp_trillion": 3.42,
+    "population": 68492000,
+    "population_million": 68.5,
+    "area_sq_km": 241930,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "indonesia": {
+    "name": "Indonesia",
+    "iso3": "IDN",
+    "gdp_usd": 1371169301563.62,
+    "gdp_trillion": 1.37,
+    "population": 281190067,
+    "population_million": 281.2,
+    "area_sq_km": 1892555,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "india": {
+    "name": "India",
+    "iso3": "IND",
+    "gdp_usd": 3638489096033.86,
+    "gdp_trillion": 3.64,
+    "population": 1438069596,
+    "population_million": 1438.1,
+    "area_sq_km": 2973190,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "italy": {
+    "name": "Italy",
+    "iso3": "ITA",
+    "gdp_usd": 2316727999333.18,
+    "gdp_trillion": 2.32,
+    "population": 58984216,
+    "population_million": 59.0,
+    "area_sq_km": 295720,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "japan": {
+    "name": "Japan",
+    "iso3": "JPN",
+    "gdp_usd": 4213167237905.83,
+    "gdp_trillion": 4.21,
+    "population": 124516650,
+    "population_million": 124.5,
+    "area_sq_km": 364569,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "korea,_rep.": {
+    "name": "Korea, Rep.",
+    "iso3": "KOR",
+    "gdp_usd": 1844800934391.54,
+    "gdp_trillion": 1.84,
+    "population": 51712619,
+    "population_million": 51.7,
+    "area_sq_km": 97600,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "mexico": {
+    "name": "Mexico",
+    "iso3": "MEX",
+    "gdp_usd": 1798317581486.88,
+    "gdp_trillion": 1.8,
+    "population": 129739759,
+    "population_million": 129.7,
+    "area_sq_km": 1943950,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "nigeria": {
+    "name": "Nigeria",
+    "iso3": "NGA",
+    "gdp_usd": 487387801880.597,
+    "gdp_trillion": 0.49,
+    "population": 227882945,
+    "population_million": 227.9,
+    "area_sq_km": 910770,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "russian_federation": {
+    "name": "Russian Federation",
+    "iso3": "RUS",
+    "gdp_usd": 2071505725030.58,
+    "gdp_trillion": 2.07,
+    "population": 143826130,
+    "population_million": 143.8,
+    "area_sq_km": 16376870,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "saudi_arabia": {
+    "name": "Saudi Arabia",
+    "iso3": "SAU",
+    "gdp_usd": 1218584533333.33,
+    "gdp_trillion": 1.22,
+    "population": 33702731,
+    "population_million": 33.7,
+    "area_sq_km": 2149690,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "united_states": {
+    "name": "United States",
+    "iso3": "USA",
+    "gdp_usd": 27292170793214.4,
+    "gdp_trillion": 27.29,
+    "population": 336806231,
+    "population_million": 336.8,
+    "area_sq_km": 9147420,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  },
+  "south_africa": {
+    "name": "South Africa",
+    "iso3": "ZAF",
+    "gdp_usd": 381440724491.232,
+    "gdp_trillion": 0.38,
+    "population": 63212384,
+    "population_million": 63.2,
+    "area_sq_km": 1213090,
+    "source": "World Bank Open Data (CC BY-4.0)",
+    "year": "2023"
+  }
+}
