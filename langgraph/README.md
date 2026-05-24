@@ -20,15 +20,19 @@ langgraph/
 │           ├── __init__.py
 │           └── main.py
 ├── foundation/
-│   ├── augmented_llm/
-│   │   ├── pyproject.toml
-│   │   └── src/
-│   │       ├── __init__.py
-│   │       └── main.py
-│   └── aws_learning_agent/
-│       ├── pyproject.toml
-│       └── src/
-│           └── main.py
+│   └── augmented_llm/
+│       ├── llm_tool_use_with_custom_mcp/
+│       │   ├── pyproject.toml
+│       │   ├── README.md
+│       │   └── src/
+│       │       ├── __init__.py
+│       │       ├── agent.py
+│       │       ├── main.py
+│       │       └── prompts.py
+│       └── llm_tool_use_with_reference_mcp/
+│           ├── pyproject.toml
+│           └── src/
+│               └── main.py
 └── workflow/
     ├── evaluator_optimizer/
     │   ├── pyproject.toml
@@ -98,8 +102,8 @@ Each sub-project depends on the `shared` package at `_shared/` (editable install
 
 | Pattern | Description | Run Command |
 |---------|-------------|-------------|
-| **Augmented LLM** | RAG + tool use via MCP. Uses a ReAct agent with MCP tool stubs (e.g., `get_weather`) to answer queries requiring tool calls. | `cd langgraph/foundation/augmented_llm && uv run python -m src.main --task augmented_llm` |
-| **AWS Learning Agent** | Documentation lookup agent using the real AWS Documentation MCP Server (`awslabs.aws-documentation-mcp-server`). Answers AWS questions with up-to-date docs. | `cd langgraph/foundation/aws_learning_agent && uv run python -m src.main` |
+| **LLM Tool Use (Custom MCP)** | Country data Q&A via custom MCP. Uses a ReAct agent with MCP tools (`country_lookup_tool`, `calculator_tool`) to answer queries about GDP, population, and area. | `cd langgraph/foundation/augmented_llm/llm_tool_use_with_custom_mcp && uv run python -m src.main --task augmented_llm --question "What is the population density of Japan?"` |
+| **LLM Tool Use (Reference MCP)** | Documentation lookup agent using the AWS Documentation MCP Server (`awslabs.aws-documentation-mcp-server`). Answers AWS questions with up-to-date docs. | `cd langgraph/foundation/augmented_llm/llm_tool_use_with_reference_mcp && uv run python -m src.main` |
 
 ### Workflow
 
