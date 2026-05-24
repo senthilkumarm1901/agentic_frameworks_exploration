@@ -1,0 +1,18 @@
+[project]
+name = "hermes-coding-agent"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "hermes-agent @ git+https://github.com/NousResearch/hermes-agent.git",
+    "shared",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+shared = { path = "../../../_shared", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
