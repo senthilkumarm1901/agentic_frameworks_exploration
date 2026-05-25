@@ -77,16 +77,25 @@ Set these in a `.env` file at the workspace root or export them.
 
 ---
 
-## Run Commands
+## Experiments
 
 ```bash
 cd langgraph/foundation/augmented_llm/llm_tool_use_with_custom_mcp
+
+# Run the predefined experiment suite
+./experiments.bash
+
+# Override model/base URL for one run
+OLLAMA_MODEL="qwen3:8b" OLLAMA_BASE_URL="http://localhost:11434" ./experiments.bash
 
 # GDP comparison (US vs India) — default question
 uv run python -m src.main --task augmented_llm
 
 # Population density of Japan
 uv run python -m src.main --task augmented_llm --question "What is the population density of Japan in people per square kilometer?"
+
+# GDP per capita ratio: US vs Japan
+uv run python -m src.main --task augmented_llm --question "What is the ratio of GDP per capita between the United States and Japan? Calculate it precisely"
 
 # GDP per capita of Germany
 uv run python -m src.main --task augmented_llm --question "What is the GDP per capita of Germany in trillion USD per million people?"
