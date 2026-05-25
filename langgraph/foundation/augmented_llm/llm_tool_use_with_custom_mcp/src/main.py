@@ -28,6 +28,13 @@ DEFAULT_QUESTION = "How many times larger is the GDP of the United States compar
 LOG_FILE = Path(__file__).parent.parent / "logs.txt"
 
 
+def log_stderr(message: str):
+    print(message, file=sys.stderr)
+    with open(LOG_FILE, "a") as f:
+        f.write(message + "\n")
+
+
+
 def append_to_log(result: dict, question: str, task: str):
     """Append experiment result to logs.txt with timestamp."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -80,15 +87,17 @@ def main():
     )
     args = parser.parse_args()
 
-    print(f"[INFO] Task: {args.task}", file=sys.stderr)
-    print(f"[INFO] Question: {args.question}", file=sys.stderr)
+    log_stderr(f"[INFO] Task: {args.task}")
+
+    log_stderr(f"[INFO] Question: {args.question}")
+    # print(f"[INFO] Question: {args.question}", file=sys.stderr)
 
     # Run the agent
     result = asyncio.run(run_agent(args.question))
 
     # Log result to logs.txt
     append_to_log(result, args.question, args.task)
-    print(f"[INFO] Result logged to {LOG_FILE}", file=sys.stderr)
+    log_stderr(f"[INFO] Result logged to {LOG_FILE}")
 
     # Emit standardized JSON output to stdout (eval contract)
     output = {
