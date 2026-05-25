@@ -26,12 +26,21 @@ DEFAULT_QUESTION = "How many times larger is the GDP of the United States compar
 
 # Log file path (in the same directory as this module's parent)
 LOG_FILE = Path(__file__).parent.parent / "logs.txt"
+LOG_FILE_DISPLAY = LOG_FILE.name
+SEPARATOR = "=" * 72
 
 
 def log_stderr(message: str):
+    """Write operational logs to stderr only (not to logs.txt)."""
     print(message, file=sys.stderr)
-    with open(LOG_FILE, "a") as f:
-        f.write(message + "\n")
+
+
+def _next_experiment_number() -> int:
+    """Return the next experiment number based on existing logs."""
+    if not LOG_FILE.exists():
+        return 1
+    content = LOG_FILE.read_text()
+    return content.count("Experiment #") + 1
 
 
 
@@ -40,6 +49,7 @@ def append_to_log(result: dict, question: str, task: str):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     model = os.environ.get("OLLAMA_MODEL", "qwen3:8b")
     answer_text = result.get("answer", "")
+    experiment_number = _next_experiment_number()
     
     # Format tool calls detail
     tool_calls_str = ""
@@ -52,7 +62,9 @@ def append_to_log(result: dict, question: str, task: str):
     
     # Build log entry
     log_entry = f"""
---- {timestamp} ---
+{SEPARATOR}
+Experiment #{experiment_number} | {timestamp}
+{SEPARATOR}
 Task: {task}
 Model: {model}
 Question: {question}
@@ -63,6 +75,7 @@ Tool Calls: {result["tool_calls"]}
 Tool Calls Detail:
 {tool_calls_str}Duration: {result["total_duration_ms"]}ms
 Status: SUCCESS
+{SEPARATOR}
 """
     
     # Append to log file
@@ -97,7 +110,7 @@ def main():
 
     # Log result to logs.txt
     append_to_log(result, args.question, args.task)
-    log_stderr(f"[INFO] Result logged to {LOG_FILE}")
+    log_stderr(f"[INFO] Result logged to {LOG_FILE_DISPLAY}")
 
     # Emit standardized JSON output to stdout (eval contract)
     output = {
