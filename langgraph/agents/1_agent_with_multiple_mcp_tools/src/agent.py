@@ -19,14 +19,14 @@ from src.prompts import SYSTEM_PROMPT
 def _find_project_root() -> Path:
     current = Path(__file__).resolve()
     for parent in current.parents:
-        candidate = parent / "_shared" / "src" / "country_tools_server.py"
+        candidate = parent / "_shared" / "src" / "mcp_servers" / "pattern1_server.py"
         if candidate.exists():
             return parent
-    raise FileNotFoundError("Could not locate _shared/src/country_tools_server.py")
+    raise FileNotFoundError("Could not locate _shared/src/mcp_servers/pattern1_server.py")
 
 
 _PROJECT_ROOT = _find_project_root()
-_MCP_SERVER_PATH = str(_PROJECT_ROOT / "_shared" / "src" / "country_tools_server.py")
+_MCP_SERVER_PATH = str(_PROJECT_ROOT / "_shared" / "src" / "mcp_servers" / "pattern1_server.py")
 
 
 def _get_llm() -> ChatOllama:
