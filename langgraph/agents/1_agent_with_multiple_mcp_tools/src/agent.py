@@ -81,6 +81,8 @@ async def run_agent(user_query: str) -> dict:
     tool_calls_detail = []  # Detailed tool call info: name, args, result
     pending_tool_calls = {}  # Map tool_call_id -> {name, args}
     llm_calls = 0
+    prompt_tokens = 0
+    completion_tokens = 0
     ai_contents = []  # Collect all non-empty AI message contents
 
     for msg in messages:
@@ -89,6 +91,10 @@ async def run_agent(user_query: str) -> dict:
             # Count as LLM call if there's content OR tool calls
             if msg.content or (hasattr(msg, "tool_calls") and msg.tool_calls):
                 llm_calls += 1
+                # Extract token counts from response_metadata (Ollama format)
+                metadata = getattr(msg, "response_metadata", {}) or {}
+                prompt_tokens += metadata.get("prompt_eval_count", 0)
+                completion_tokens += metadata.get("eval_count", 0)
             # Collect non-empty content for answer extraction
             if msg.content and isinstance(msg.content, str) and msg.content.strip():
                 ai_contents.append(msg.content)
@@ -148,6 +154,10 @@ async def run_agent(user_query: str) -> dict:
             if isinstance(fallback_text, str) and fallback_text.strip():
                 answer = fallback_text.strip()
                 llm_calls += 1
+                # Capture tokens from fallback call
+                fallback_metadata = getattr(fallback_resp, "response_metadata", {}) or {}
+                prompt_tokens += fallback_metadata.get("prompt_eval_count", 0)
+                completion_tokens += fallback_metadata.get("eval_count", 0)
                 print("[INFO] Final answer generated via fallback synthesis", file=sys.stderr)
         except Exception as exc:
             print(f"[WARN] Fallback synthesis failed: {exc}", file=sys.stderr)
@@ -164,4 +174,7 @@ async def run_agent(user_query: str) -> dict:
         "tool_calls": len(tool_calls_detail),
         "tool_calls_detail": tool_calls_detail,
         "total_duration_ms": total_duration_ms,
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+        "total_tokens": prompt_tokens + completion_tokens,
     }

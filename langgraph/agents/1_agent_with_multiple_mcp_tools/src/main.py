@@ -3,7 +3,7 @@
 Runs a LangGraph ReAct agent connected to an MCP server for country data queries.
 
 Usage:
-    uv run python -m src.main --task augmented_llm --question "What is the population density of Japan?"
+    uv run python -m src.main --task country_analysis --question "What is the population density of Japan?"
 """
 
 import argparse
@@ -11,8 +11,14 @@ import asyncio
 import json
 import os
 import sys
+import time
+import tracemalloc
 from datetime import datetime
 from pathlib import Path
+
+# Start memory tracking and record cold start time immediately
+tracemalloc.start()
+_SCRIPT_START_TIME = time.perf_counter()
 
 from dotenv import load_dotenv
 
@@ -90,7 +96,7 @@ def main():
     parser.add_argument(
         "--task",
         required=True,
-        help="Task identifier (e.g., augmented_llm)",
+        help="Task identifier (e.g., country_analysis)",
     )
     parser.add_argument(
         "--question",
@@ -105,8 +111,16 @@ def main():
     log_stderr(f"[INFO] Question: {args.question}")
     # print(f"[INFO] Question: {args.question}", file=sys.stderr)
 
+    # Capture cold start time (time from script start to first LLM call)
+    cold_start_ms = int((time.perf_counter() - _SCRIPT_START_TIME) * 1000)
+
     # Run the agent
     result = asyncio.run(run_agent(args.question))
+
+    # Get peak memory usage
+    _, peak_memory_bytes = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    peak_memory_mb = round(peak_memory_bytes / (1024 * 1024), 2)
 
     # Log result to logs.txt
     append_to_log(result, args.question, args.task)
@@ -114,13 +128,17 @@ def main():
 
     # Emit standardized JSON output to stdout (eval contract)
     output = {
-        "question": args.question,
         "answer": result["answer"],
-        "llm_calls": result["llm_calls"],
-        "tool_calls": result["tool_calls"],
-        "total_duration_ms": result["total_duration_ms"],
         "framework": "langgraph",
-        "pattern": "augmented_llm",
+        "pattern": "agent_with_multiple_mcp_tools",
+        "llm_calls": result["llm_calls"],
+        "total_duration_ms": result["total_duration_ms"],
+        "prompt_tokens": result["prompt_tokens"],
+        "completion_tokens": result["completion_tokens"],
+        "total_tokens": result["total_tokens"],
+        "tool_calls": result["tool_calls"],
+        "cold_start_ms": cold_start_ms,
+        "peak_memory_mb": peak_memory_mb,
     }
     json.dump(output, sys.stdout, indent=2)
     sys.stdout.write("\n")
