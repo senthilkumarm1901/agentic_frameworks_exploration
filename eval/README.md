@@ -35,10 +35,16 @@ uv run python src/main.py --task <task_name>
 ```json
 {
   "answer": "...",
+  "framework": "langgraph",
+  "pattern": "agent_with_multiple_mcp_tools",
   "llm_calls": 3,
   "total_duration_ms": 1240,
-  "framework": "langgraph",
-  "pattern": "prompt_chaining"
+  "prompt_tokens": 1542,
+  "completion_tokens": 487,
+  "total_tokens": 2029,
+  "tool_calls": 3,
+  "cold_start_ms": 2340,
+  "peak_memory_mb": 312.5
 }
 ```
 
@@ -63,6 +69,22 @@ uv run python src/main.py --task <task_name>
 | Dependency Count | count | Direct + transitive dependencies |
 | Cold Start | ms | Time from process start to first LLM call |
 | Determinism | % | Output consistency across repeated runs |
+
+## Metric Collection Methodology
+
+| Metric | Collection Method | Notes |
+|--------|-------------------|-------|
+| `total_duration_ms` | Agent code timer | Wall-clock from start to answer |
+| `llm_calls` | Agent code counter | Incremented per LLM invocation |
+| `prompt_tokens` | Ollama response `prompt_eval_count` | Summed across all LLM calls |
+| `completion_tokens` | Ollama response `eval_count` | Summed across all LLM calls |
+| `total_tokens` | `prompt_tokens + completion_tokens` | Computed |
+| `cold_start_ms` | Agent code timer | Time from process start to first LLM call |
+| `peak_memory_mb` | `tracemalloc` / `resource.getrusage()` | Max RSS during execution |
+| `packaging_size_mb` | `du -sk .venv/` | Installed venv size |
+| `loc` | `find src -name "*.py" -exec cat {} + \| wc -l` | Pattern's own src/ only; excludes `_shared/` |
+| `dependency_count` | `grep -c 'name = ' uv.lock` | Total packages in lockfile (direct + transitive) |
+| `determinism` | Compare answers across N runs | % identical answers |
 
 ## Scoring
 
