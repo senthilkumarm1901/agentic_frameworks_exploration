@@ -2,13 +2,13 @@
 
 ## Overview
 
-This is the evaluation harness for comparing **3 agentic frameworks** across **8 LLM patterns**, totalling 24 applications. The harness discovers each app, invokes it via a standardized CLI contract, collects structured JSON output, and generates comparison reports.
+This is the evaluation harness for comparing **3 agentic frameworks** across **6 patterns**, totalling 18 applications. The harness discovers each app, invokes it via a standardized CLI contract, collects structured JSON output, and generates comparison reports.
 
 | Framework | Apps | Patterns |
 |-----------|------|----------|
-| LangGraph | 8 | All 8 |
-| AWS Strands Agents | 8 | All 8 |
-| Hermes | 8 | All 8 |
+| LangGraph | 6 | All 6 |
+| AWS Strands Agents | 6 | All 6 |
+| Hermes | 6 | All 6 |
 
 ## Frameworks Under Evaluation
 
@@ -99,26 +99,22 @@ make report
 
 ## Pattern Catalog
 
-| # | Pattern | Type | Description | Required Tools |
-|---|---------|------|-------------|----------------|
-| 1 | Augmented LLM | Foundation | LLM with tool access and retrieval | Web search, calculator |
-| 2 | Prompt Chaining | Workflow | Sequential LLM calls with validation gates | Text processing |
-| 3 | Routing | Workflow | Classify input and dispatch to specialist | Classification |
-| 4 | Parallelization | Workflow | Fan-out tasks and aggregate results | Multiple tool calls |
-| 5 | Orchestrator-Workers | Workflow | Dynamic task decomposition and delegation | Task-specific tools |
-| 6 | Evaluator-Optimizer | Workflow | Generate-then-critique loop | Evaluation criteria |
-| 7 | Coding Agent | Agent | Autonomous code generation and execution | Code interpreter, file I/O |
-| 8 | Customer Support | Agent | Multi-turn conversation with tool use | Knowledge base, ticketing |
+| # | Pattern | Type | Description |
+|---|---------|------|-------------|
+| 1 | agent_with_multiple_mcp_tools | Agent | Agent using multiple MCP tools |
+| 2 | agent_with_rag_mcp_tool | Agent | Extending Agent Pattern 1 (which already has multiple tools) with a RAG MCP Tool |
+| 3 | agent_with_mcp_tools_and_skills | Agent | Extending Agent Pattern 2 with Skills |
+| 4 | workflow_2_layer_sequential | Workflow | Two-layer sequential workflow |
+| 5 | workflow_3_layer_routing | Workflow | Three-layer routing workflow |
+| 6 | workflow_2_layer_parallelization | Workflow | Two-layer parallel workflow |
 
 ## Example Tasks
 
 | Task Name | Pattern | Description |
 |-----------|---------|-------------|
-| `summarize_article` | Prompt Chaining | Summarize a given article in 3 bullet points |
-| `route_support_ticket` | Routing | Classify and route a customer support ticket |
-| `parallel_research` | Parallelization | Research 3 topics concurrently and merge |
-| `plan_and_execute` | Orchestrator-Workers | Break down a complex task and delegate |
-| `improve_essay` | Evaluator-Optimizer | Iteratively improve an essay draft |
-| `generate_function` | Coding Agent | Generate a Python function from a spec |
-| `handle_refund` | Customer Support | Process a refund request with tool calls |
-| `augmented_qa` | Augmented LLM | Answer a question using retrieval + tools |
+| country_analysis | agent_with_multiple_mcp_tools | Multi-tool orchestration questions using country_lookup_tool and calculator_tool (e.g., population density, GDP per capita comparisons) |
+| TBD | agent_with_rag_mcp_tool | To be defined |
+| TBD | agent_with_mcp_tools_and_skills | To be defined |
+| TBD | workflow_2_layer_sequential | To be defined |
+| TBD | workflow_3_layer_routing | To be defined |
+| TBD | workflow_2_layer_parallelization | To be defined |

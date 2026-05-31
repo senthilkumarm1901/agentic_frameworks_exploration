@@ -17,44 +17,40 @@
 
 ## Phase 1: Foundation Pattern — Augmented LLM
 
-- [x] `langgraph/foundation/augmented_llm/` — LangGraph augmented LLM with tool use
-- [x] `strands/foundation/augmented_llm/` — Strands Agents augmented LLM with tool use
-- [ ] `hermes/foundation/augmented_llm/` — Hermes augmented LLM with tool use (TBD)
-- [x] Verify all three produce conformant JSON output for `augmented_qa` task
+- [x] `langgraph/agents/1_agent_with_multiple_mcp_tools/` — LangGraph augmented LLM with multiple MCP-backed tools
+- [x] Verify conformant JSON output for `augmented_qa` task
+
+Note: Strands and Hermes will implement the augmented LLM pattern as part of their respective 6-pattern implementations (Pattern 1 in Phases 3 and 4).
 
 ## Phase 2: LangGraph Workflow & Agent Patterns
 
-- [x] `langgraph/workflow/prompt_chaining/` — Sequential LLM calls with gates
-- [x] `langgraph/workflow/routing/` — Input classification and dispatch
-- [x] `langgraph/workflow/parallelization/` — Fan-out and aggregation
-- [x] `langgraph/workflow/orchestrator_workers/` — Dynamic decomposition
-- [x] `langgraph/workflow/evaluator_optimizer/` — Generate-critique loop
-- [x] `langgraph/agent/coding_agent/` — Autonomous code generation
-- [x] `langgraph/agent/customer_support/` — Multi-turn support with tools
+- [ ] `langgraph/agents/2_agent_with_rag_mcp_tool/` — Placeholder README only in the current wave
+- [ ] `langgraph/agents/3_agent_with_mcp_tools_and_skills/` — Placeholder README only in the current wave
+- [ ] `langgraph/workflows/4_workflow_2_layer_sequential/` — Placeholder README only in the current wave
+- [ ] `langgraph/workflows/5_workflow_3_layer_routing/` — Placeholder README only in the current wave
+- [ ] `langgraph/workflows/6_workflow_2_layer_parallelization/` — Placeholder README only in the current wave
+- [ ] Later waves will populate patterns 2-6 with migrated implementations and runnable scaffolding as separately approved work
 
 ## Phase 3: AWS Strands Agents Implementation
 
-- [x] `strands/workflow/prompt_chaining/` — Sequential LLM calls with gates
-- [x] `strands/workflow/routing/` — Input classification and dispatch
-- [x] `strands/workflow/parallelization/` — Fan-out and aggregation
-- [x] `strands/workflow/orchestrator_workers/` — Dynamic decomposition
-- [x] `strands/workflow/evaluator_optimizer/` — Generate-critique loop
-- [x] `strands/agent/coding_agent/` — Autonomous code generation
-- [x] `strands/agent/customer_support/` — Multi-turn support with tools
+- [ ] `strands/agents/1_agent_with_multiple_mcp_tools/` — Agent with multiple MCP tools
+- [ ] `strands/agents/2_agent_with_rag_mcp_tool/` — Extending Agent Pattern 1 with a RAG MCP Tool
+- [ ] `strands/agents/3_agent_with_mcp_tools_and_skills/` — Extending Agent Pattern 2 with Skills
+- [ ] `strands/workflows/4_workflow_2_layer_sequential/` — Two-layer sequential workflow
+- [ ] `strands/workflows/5_workflow_3_layer_routing/` — Three-layer routing workflow
+- [ ] `strands/workflows/6_workflow_2_layer_parallelization/` — Two-layer parallel workflow
 - [x] `strands/_ollama_adapter/` — Custom Ollama model provider for Strands
 
 ## Phase 4: Hermes Implementation
 
-- [ ] `hermes/foundation/augmented_llm/` — Augmented LLM pattern as Hermes CLI app
-- [ ] `hermes/workflow/prompt_chaining/` — Prompt chaining pattern as Hermes CLI app
-- [ ] `hermes/workflow/routing/` — Routing pattern as Hermes CLI app
-- [ ] `hermes/workflow/parallelization/` — Parallelization pattern as Hermes CLI app
-- [ ] `hermes/workflow/orchestrator_workers/` — Orchestrator-workers pattern as Hermes CLI app
-- [ ] `hermes/workflow/evaluator_optimizer/` — Evaluator-optimizer pattern as Hermes CLI app
-- [ ] `hermes/agent/coding_agent/` — Coding agent pattern as Hermes CLI app
-- [ ] `hermes/agent/customer_support/` — Customer support pattern as Hermes CLI app
+- [ ] `hermes/agents/1_agent_with_multiple_mcp_tools/` — Agent with multiple MCP tools as Hermes CLI app
+- [ ] `hermes/agents/2_agent_with_rag_mcp_tool/` — Agent with RAG MCP tool as Hermes CLI app
+- [ ] `hermes/agents/3_agent_with_mcp_tools_and_skills/` — Agent with MCP tools and skills as Hermes CLI app
+- [ ] `hermes/workflows/4_workflow_2_layer_sequential/` — Two-layer sequential workflow as Hermes CLI app
+- [ ] `hermes/workflows/5_workflow_3_layer_routing/` — Three-layer routing workflow as Hermes CLI app
+- [ ] `hermes/workflows/6_workflow_2_layer_parallelization/` — Two-layer parallel workflow as Hermes CLI app
 - [ ] Define Hermes tool consumption approach (MCP, native, or hybrid — TBD)
-- [ ] Ensure all 8 apps conform to the CLI contract (JSON on stdout)
+- [ ] Ensure all 6 apps conform to the CLI contract (JSON on stdout)
 
 ## Phase 5: Evaluation Harness
 
@@ -64,4 +60,4 @@
 - [ ] Golden dataset with expected answers for accuracy scoring
 - [ ] Makefile targets: `make eval`, `make eval FRAMEWORK=<name>`, `make report`
 - [ ] Extended metrics collection (peak memory, cold start, determinism)
-- [ ] Final comparison report across all 3 frameworks × 8 patterns
+- [ ] Final comparison report across all 3 frameworks × 6 patterns (18 total apps)
