@@ -104,6 +104,9 @@ def country_kb_search(query: str, top_k: int = 3) -> str:
 
     query_embedding = model.encode(query).tolist()
 
+    # Load collection into memory before search (required by Milvus)
+    client.load_collection(_COLLECTION)
+
     results = client.search(
         collection_name=_COLLECTION,
         data=[query_embedding],

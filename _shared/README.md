@@ -1,7 +1,25 @@
 ## Shared Scripts
 Utility scripts in this directory are intended to be run individually with uv.
 
-Countries JSON generator
+## Environment Setup
+
+### Hugging Face Token (Required for RAG patterns)
+
+Patterns 2+ use `sentence-transformers` which downloads models from Hugging Face Hub.
+To avoid rate limiting warnings, set up your HF token:
+
+1. Get a token at https://huggingface.co/settings/tokens (read access is sufficient)
+2. Copy `.env.example` to `.env` and add your token:
+   ```bash
+   cp .env.example .env
+   # Edit .env and set HF_TOKEN=hf_your_token_here
+   ```
+
+The experiments scripts will automatically load this token.
+
+---
+
+## Countries JSON generator
 Source file: generate_countries_json.py
 
 Run from the repository root:

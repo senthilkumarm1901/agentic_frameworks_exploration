@@ -15,7 +15,7 @@ mcp-tools = "shared.mcp_server:main"
 # Pre-download embedding model for offline use:
 # python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
 rag = [
-    "pymilvus>=2.4",
+    "pymilvus[milvus_lite]>=2.4",
     "sentence-transformers>=3.0",
 ]
 
