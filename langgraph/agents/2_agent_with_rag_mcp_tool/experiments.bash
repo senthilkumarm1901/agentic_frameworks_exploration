@@ -125,7 +125,7 @@ main() {
   
   # Pre-download embedding model for RAG (avoids download during timed runs)
   echo "Ensuring embedding model is cached..."
-  python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')" 2>/dev/null
+  uv run python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
   echo "Embedding model ready."
   echo
   
@@ -141,17 +141,17 @@ main() {
   # Run experiments — Pattern 2 includes hybrid questions that use RAG
   
   # Hybrid questions (numeric + qualitative)
-  run_experiment "country_analysis" "Brazil has the Amazon rainforest — what is its population density?"
-  run_experiment "country_analysis" "Japan is known for its technology sector — what is its GDP per capita?"
-  run_experiment "country_analysis" "India has a diverse culture — what is its population compared to China?"
+#   run_experiment "country_analysis" "Brazil has the Amazon rainforest — what is its population density?"
+#   run_experiment "country_analysis" "Japan is known for its technology sector — what is its GDP per capita?"
+#   run_experiment "country_analysis" "India has a diverse culture — what is its population compared to China?"
   
   # Pure qualitative questions (RAG only)
   run_experiment "country_analysis" "What are the main geographic features of Australia?"
   run_experiment "country_analysis" "Describe the political system of Germany."
   
   # Pure numeric questions (same as Pattern 1 for comparison)
-  run_experiment "country_analysis" "What is the population density of Japan in people per square kilometer?"
-  run_experiment "country_analysis" "What is the ratio of GDP per capita between the United States and Japan?"
+#   run_experiment "country_analysis" "What is the population density of Japan in people per square kilometer?"
+#   run_experiment "country_analysis" "What is the ratio of GDP per capita between the United States and Japan?"
   
   echo "All experiments finished."
   echo "Check logs in: ${LOG_FILE}"

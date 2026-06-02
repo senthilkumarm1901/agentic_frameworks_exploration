@@ -8,6 +8,8 @@ dependencies = [
     "langchain-mcp-adapters>=0.1",
     "python-dotenv>=1.0",
     "mcp[cli]>=1.0",
+    "sentence-transformers>=3.0",
+    "pymilvus[milvus_lite]>=2.4",
 ]
 
 [build-system]
