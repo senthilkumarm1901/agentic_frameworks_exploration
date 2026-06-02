@@ -75,32 +75,32 @@ run_experiment() {
     echo "model: ${OLLAMA_MODEL}"
   } >> "${LOG_FILE}"
   
-  # Run and capture output
+  # Run and capture output (Python for macOS compatibility - date %N not supported)
   local output
-  local start_time=$(date +%s.%N)
+  local start_time=$(python3 -c "import time; print(int(time.time() * 1000))")
   
   if output=$(uv run python -m src.main --task "$task" --question "$question" 2>&1); then
-    local end_time=$(date +%s.%N)
-    local duration=$(echo "$end_time - $start_time" | bc)
+    local end_time=$(python3 -c "import time; print(int(time.time() * 1000))")
+    local duration=$((end_time - start_time))
     
     echo "$output"
     
     # Append output to logs in readable format
     {
-      echo "duration_seconds: ${duration}"
+      echo "duration_ms: ${duration}"
       echo "status: success"
       echo "output:"
       echo "$output" | sed 's/^/  /'
       echo ""
     } >> "${LOG_FILE}"
   else
-    local end_time=$(date +%s.%N)
-    local duration=$(echo "$end_time - $start_time" | bc)
+    local end_time=$(python3 -c "import time; print(int(time.time() * 1000))")
+    local duration=$((end_time - start_time))
     
     echo "ERROR: $output"
     
     {
-      echo "duration_seconds: ${duration}"
+      echo "duration_ms: ${duration}"
       echo "status: error"
       echo "output:"
       echo "$output" | sed 's/^/  /'
@@ -115,11 +115,18 @@ run_experiment() {
 # MAIN LOGIC
 # =============================================================================
 main() {
+  # Load HF_TOKEN from _shared/.env if available
+  SHARED_ENV="$(dirname "$(dirname "$(dirname "$(pwd)")")")/_shared/.env"
+  if [[ -f "$SHARED_ENV" ]]; then
+      export $(grep -v '^#' "$SHARED_ENV" | xargs)
+  fi
+
   echo "Running experiments with:"
   echo "  FRAMEWORK=$FRAMEWORK"
   echo "  PATTERN=$PATTERN"
   echo "  OLLAMA_MODEL=$OLLAMA_MODEL"
   echo "  OLLAMA_BASE_URL=$OLLAMA_BASE_URL"
+  echo "  HF_TOKEN=****${HF_TOKEN: -4}"
   echo "  LOG_FILE=$LOG_FILE"
   echo
   
