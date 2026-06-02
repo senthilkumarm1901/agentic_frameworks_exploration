@@ -1,0 +1,544 @@
+================================================================================
+STATIC METRICS (captured once per setup)
+================================================================================
+timestamp: 2026-06-01T05:19:38Z
+framework: langgraph
+pattern: agent_with_rag_mcp_tool
+packaging_size_mb: 984.79
+loc: 373
+dependency_count: 318
+
+================================================================================
+RUN METRICS (appended per execution)
+================================================================================
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-01T05:19:38Z
+task: country_analysis
+question: What are the main geographic features of Australia?
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #1 | 2026-06-01 10:50:12
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: What are the main geographic features of Australia?
+Answer:
+The main geographic features of Australia include:
+
+*   **The Outback:** This vast interior region covers most of the continent and is one of the largest remote wilderness areas in the world.
+*   **Arid and Semi-Arid Land:** Australia is the driest inhabited continent, with approximately 70% of its landmass classified as arid or semi-arid.
+*   **The Great Barrier Reef:** Located off the northeast coast, this is the world's largest coral reef system and is even visible from space.
+*   **Unique Fauna:** The continent is home to more species of venomous snakes than any other, including the inland taipan, the world's most venomous snake.
+*   **Continental Status:** Geographically, Australia is unique as it is both a country and a continent, making it the world's largest island and smallest continent.
+
+These features highlight Australia's distinct position as a large, isolated landmass with extreme climates and unique ecosystems.
+LLM Calls: 2
+Tool Calls: 1
+Tool Calls Detail:
+  - country_kb_search_tool(query="main geographic features of Australia", top_k="5") → [Australia] (relevance: 0.349) The Australian Outback covers most of the continent's interior and is one of the largest remote wilderness areas in the world.
+[Australia] (relevance: 0.400) Australia i
+Duration: 22754ms
+Status: SUCCESS
+========================================================================
+duration_seconds: 34.311102000
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: What are the main geographic features of Australia?
+  [06/01/26 10:49:50] INFO     Processing request of type            server.py:727
+                               ListToolsRequest                                   
+  [06/01/26 10:49:55] INFO     Processing request of type            server.py:727
+                               CallToolRequest                                    
+  [06/01/26 10:49:57] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /Users/senthilkumar.m/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 63634                        
+  [06/01/26 10:50:01] INFO     No device provided, using mps          model.py:183
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/modules.json "HTTP/1.1 307                    
+                               Temporary Redirect"                                
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+                      WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/01/26 10:50:02] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/modules.json                
+                                "HTTP/1.1 200 OK"                                 
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config_sentence_transformers.j                
+                               son "HTTP/1.1 307 Temporary                        
+                               Redirect"                                          
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config_sente                
+                               nce_transformers.json "HTTP/1.1 200                
+                               OK"                                                
+                      INFO     Loading SentenceTransformer model from model.py:992
+                               sentence-transformers/all-MiniLM-L6-v2             
+                               .                                                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config_sentence_transformers.j                
+                               son "HTTP/1.1 307 Temporary                        
+                               Redirect"                                          
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config_sente                
+                               nce_transformers.json "HTTP/1.1 200                
+                               OK"                                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/README.md "HTTP/1.1 307                       
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/README.md                   
+                               "HTTP/1.1 200 OK"                                  
+  [06/01/26 10:50:03] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/modules.json "HTTP/1.1 307                    
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/modules.json                
+                                "HTTP/1.1 200 OK"                                 
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/sentence_bert_config.json                     
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/sentence_ber                
+                               t_config.json "HTTP/1.1 200 OK"                    
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/adapter_config.json "HTTP/1.1                 
+                               404 Not Found"                                     
+  [06/01/26 10:50:04] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config.json "HTTP/1.1 307                     
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config.json                 
+                               "HTTP/1.1 200 OK"                                  
+  I0601 10:50:04.117947 1684892 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+  I0601 10:50:04.130269 1685175 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(17, generation: 1)
+  I0601 10:50:04.130298 1685175 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(16, generation: 1)
+  I0601 10:50:04.130300 1685175 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(9, generation: 1)
+  Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7008.65it/s]
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/processor_config.json                         
+                               "HTTP/1.1 404 Not Found"                           
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/preprocessor_config.json                      
+                               "HTTP/1.1 404 Not Found"                           
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/video_preprocessor_config.json                
+                                "HTTP/1.1 404 Not Found"                          
+  [06/01/26 10:50:05] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/preprocessor_config.json                      
+                               "HTTP/1.1 404 Not Found"                           
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/tokenizer_config.json                         
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/tokenizer_co                
+                               nfig.json "HTTP/1.1 200 OK"                        
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config.json "HTTP/1.1 307                     
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config.json                 
+                               "HTTP/1.1 200 OK"                                  
+  [06/01/26 10:50:06] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config.json "HTTP/1.1 307                     
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config.json                 
+                               "HTTP/1.1 200 OK"                                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/tokenizer_config.json                         
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/tokenizer_co                
+                               nfig.json "HTTP/1.1 200 OK"                        
+                      INFO     HTTP Request: GET                   _client.py:1025
+                               https://huggingface.co/api/models/s                
+                               entence-transformers/all-MiniLM-L6-                
+                               v2/tree/main/additional_chat_templa                
+                               tes?recursive=false&expand=false                   
+                               "HTTP/1.1 404 Not Found"                           
+                      INFO     HTTP Request: GET                   _client.py:1025
+                               https://huggingface.co/api/models/s                
+                               entence-transformers/all-MiniLM-L6-                
+                               v2/tree/main?recursive=true&expand=                
+                               false "HTTP/1.1 200 OK"                            
+  [06/01/26 10:50:07] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/1_Pooling/config.json                         
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/1_Pooling%2F                
+                               config.json "HTTP/1.1 200 OK"                      
+                      INFO     HTTP Request: GET                   _client.py:1025
+                               https://huggingface.co/api/models/s                
+                               entence-transformers/all-MiniLM-L6-                
+                               v2 "HTTP/1.1 200 OK"                               
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.01it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.01it/s]
+  [06/01/26 10:50:08] INFO     Processing request of type            server.py:727
+                               ListToolsRequest                                   
+                      INFO     MilvusLite server stopped for server_manager.py:101
+                               /Users/senthilkumar.m/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 63634)                      
+  [TOOL] country_kb_search_tool("main geographic features of Australia", "5") requested
+  [TOOL] country_kb_search_tool → [Australia] (relevance: 0.349) The Australian Outback covers most of the continent's interior and is one of the largest remote wilderness areas in the world.
+  [Australia] (relevance: 0.400) Australia is the driest inhabited continent, with approximately 70% of its landmass classified as arid or semi-arid.
+  [Australia] (relevance: 0.500) Australia is the only country that is also a continent, making it the world's largest island and smallest continent.
+  [Australia] (relevance: 0.523) Australia has more species of venomous snakes than any other continent, including the inland taipan, the world's most venomous snake.
+  [Australia] (relevance: 0.571) The Great Barrier Reef off Australia's northeast coast is the world's largest coral reef system, visible from space.
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "The main geographic features of Australia include:\n\n*   **The Outback:** This vast interior region covers most of the continent and is one of the largest remote wilderness areas in the world.\n*   **Arid and Semi-Arid Land:** Australia is the driest inhabited continent, with approximately 70% of its landmass classified as arid or semi-arid.\n*   **The Great Barrier Reef:** Located off the northeast coast, this is the world's largest coral reef system and is even visible from space.\n*   **Unique Fauna:** The continent is home to more species of venomous snakes than any other, including the inland taipan, the world's most venomous snake.\n*   **Continental Status:** Geographically, Australia is unique as it is both a country and a continent, making it the world's largest island and smallest continent.\n\nThese features highlight Australia's distinct position as a large, isolated landmass with extreme climates and unique ecosystems.",
+    "framework": "langgraph",
+    "pattern": "agent_with_rag_mcp_tool",
+    "llm_calls": 2,
+    "total_duration_ms": 22754,
+    "prompt_tokens": 2339,
+    "completion_tokens": 333,
+    "total_tokens": 2672,
+    "tool_calls": 1,
+    "cold_start_ms": 10996,
+    "peak_memory_mb": 133.64
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-01T05:20:12Z
+task: country_analysis
+question: Describe the political system of Germany.
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #2 | 2026-06-01 10:50:40
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Describe the political system of Germany.
+Answer:
+Germany operates as a **federal parliamentary republic**. In this system:
+
+- The **Federal President** (Bundespräsident) serves as the head of state, primarily performing ceremonial duties.
+- The **Chancellor** (Bundeskanzler) is the head of government and holds executive power, responsible for running the government and setting policy direction.
+- The **Bundestag** (Federal Diet) is the primary legislative body, elected by the people, and chooses the Chancellor.
+- The **Bundesrat** (Federal Council) represents the 16 federal states (Länder) and participates in legislation, especially on matters affecting state interests.
+- Germany follows a **multi-party system**, and the Chancellor is typically the leader of the party or coalition that wins the majority in the Bundestag.
+- The **Federal Constitutional Court** ensures that all government actions comply with the Basic Law (Grundgesetz), Germany's constitution.
+
+This structure emphasizes the rule of law, democratic representation, and a balance of power between federal and state authorities.
+LLM Calls: 2
+Tool Calls: 1
+Tool Calls Detail:
+  - country_kb_search_tool(query="Germany political system government structure", top_k="3") → [Germany] (relevance: 0.410) Germany is the most populous country in the European Union and operates as a federal parliamentary republic.
+[Australia] (relevance: 0.588) The country operates as a const
+Duration: 19523ms
+Status: SUCCESS
+========================================================================
+duration_seconds: 27.798761000
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: Describe the political system of Germany.
+  [06/01/26 10:50:21] INFO     Processing request of type            server.py:727
+                               ListToolsRequest                                   
+  [06/01/26 10:50:24] INFO     Processing request of type            server.py:727
+                               CallToolRequest                                    
+                      INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /Users/senthilkumar.m/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 63668                        
+  [06/01/26 10:50:28] INFO     No device provided, using mps          model.py:183
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/modules.json "HTTP/1.1 307                    
+                               Temporary Redirect"                                
+  [06/01/26 10:50:30] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/modules.json                
+                                "HTTP/1.1 200 OK"                                 
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config_sentence_transformers.j                
+                               son "HTTP/1.1 307 Temporary                        
+                               Redirect"                                          
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+                      WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config_sente                
+                               nce_transformers.json "HTTP/1.1 200                
+                               OK"                                                
+                      INFO     Loading SentenceTransformer model from model.py:992
+                               sentence-transformers/all-MiniLM-L6-v2             
+                               .                                                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config_sentence_transformers.j                
+                               son "HTTP/1.1 307 Temporary                        
+                               Redirect"                                          
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config_sente                
+                               nce_transformers.json "HTTP/1.1 200                
+                               OK"                                                
+  [06/01/26 10:50:31] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/README.md "HTTP/1.1 307                       
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/README.md                   
+                               "HTTP/1.1 200 OK"                                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/modules.json "HTTP/1.1 307                    
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/modules.json                
+                                "HTTP/1.1 200 OK"                                 
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/sentence_bert_config.json                     
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/sentence_ber                
+                               t_config.json "HTTP/1.1 200 OK"                    
+  [06/01/26 10:50:32] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/adapter_config.json "HTTP/1.1                 
+                               404 Not Found"                                     
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config.json "HTTP/1.1 307                     
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config.json                 
+                               "HTTP/1.1 200 OK"                                  
+  I0601 10:50:32.377114 1685631 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+  I0601 10:50:32.385929 1686051 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(17, generation: 1)
+  I0601 10:50:32.385985 1686051 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(16, generation: 1)
+  I0601 10:50:32.385988 1686051 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(9, generation: 1)
+  Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 15838.59it/s]
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/processor_config.json                         
+                               "HTTP/1.1 404 Not Found"                           
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/preprocessor_config.json                      
+                               "HTTP/1.1 404 Not Found"                           
+  [06/01/26 10:50:33] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/video_preprocessor_config.json                
+                                "HTTP/1.1 404 Not Found"                          
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/preprocessor_config.json                      
+                               "HTTP/1.1 404 Not Found"                           
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/tokenizer_config.json                         
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/tokenizer_co                
+                               nfig.json "HTTP/1.1 200 OK"                        
+  [06/01/26 10:50:34] INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config.json "HTTP/1.1 307                     
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config.json                 
+                               "HTTP/1.1 200 OK"                                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/config.json "HTTP/1.1 307                     
+                               Temporary Redirect"                                
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/config.json                 
+                               "HTTP/1.1 200 OK"                                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/tokenizer_config.json                         
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/tokenizer_co                
+                               nfig.json "HTTP/1.1 200 OK"                        
+                      INFO     HTTP Request: GET                   _client.py:1025
+                               https://huggingface.co/api/models/s                
+                               entence-transformers/all-MiniLM-L6-                
+                               v2/tree/main/additional_chat_templa                
+                               tes?recursive=false&expand=false                   
+                               "HTTP/1.1 404 Not Found"                           
+  [06/01/26 10:50:35] INFO     HTTP Request: GET                   _client.py:1025
+                               https://huggingface.co/api/models/s                
+                               entence-transformers/all-MiniLM-L6-                
+                               v2/tree/main?recursive=true&expand=                
+                               false "HTTP/1.1 200 OK"                            
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/sentence-tra                
+                               nsformers/all-MiniLM-L6-v2/resolve/                
+                               main/1_Pooling/config.json                         
+                               "HTTP/1.1 307 Temporary Redirect"                  
+                      INFO     HTTP Request: HEAD                  _client.py:1025
+                               https://huggingface.co/api/resolve-                
+                               cache/models/sentence-transformers/                
+                               all-MiniLM-L6-v2/c9745ed1d9f207416b                
+                               e6d2e6f8de32d1f16199bf/1_Pooling%2F                
+                               config.json "HTTP/1.1 200 OK"                      
+                      INFO     HTTP Request: GET                   _client.py:1025
+                               https://huggingface.co/api/models/s                
+                               entence-transformers/all-MiniLM-L6-                
+                               v2 "HTTP/1.1 200 OK"                               
+  Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 12.90it/s]
+  [06/01/26 10:50:36] INFO     Processing request of type            server.py:727
+                               ListToolsRequest                                   
+                      INFO     MilvusLite server stopped for server_manager.py:101
+                               /Users/senthilkumar.m/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 63668)                      
+  [TOOL] country_kb_search_tool("Germany political system government structure", "3") requested
+  [TOOL] country_kb_search_tool → [Germany] (relevance: 0.410) Germany is the most populous country in the European Union and operates as a federal parliamentary republic.
+  [Australia] (relevance: 0.588) The country operates as a constitutional monarchy and parliamentary democracy, with the British monarch as head of state.
+  [India] (relevance: 0.599) India is the world's largest democracy by population, with a parliamentary system of government.
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Germany operates as a **federal parliamentary republic**. In this system:\n\n- The **Federal President** (Bundespr\u00e4sident) serves as the head of state, primarily performing ceremonial duties.\n- The **Chancellor** (Bundeskanzler) is the head of government and holds executive power, responsible for running the government and setting policy direction.\n- The **Bundestag** (Federal Diet) is the primary legislative body, elected by the people, and chooses the Chancellor.\n- The **Bundesrat** (Federal Council) represents the 16 federal states (L\u00e4nder) and participates in legislation, especially on matters affecting state interests.\n- Germany follows a **multi-party system**, and the Chancellor is typically the leader of the party or coalition that wins the majority in the Bundestag.\n- The **Federal Constitutional Court** ensures that all government actions comply with the Basic Law (Grundgesetz), Germany's constitution.\n\nThis structure emphasizes the rule of law, democratic representation, and a balance of power between federal and state authorities.",
+    "framework": "langgraph",
+    "pattern": "agent_with_rag_mcp_tool",
+    "llm_calls": 2,
+    "total_duration_ms": 19523,
+    "prompt_tokens": 2238,
+    "completion_tokens": 344,
+    "total_tokens": 2582,
+    "tool_calls": 1,
+    "cold_start_ms": 7783,
+    "peak_memory_mb": 133.64
+  }
+
