@@ -43,6 +43,8 @@ uv run python src/main.py --task <task_name>
   "completion_tokens": 487,
   "total_tokens": 2029,
   "tool_calls": 3,
+  "tools_used": ["country_lookup_tool", "calculator_tool"],
+  "skill_activations": 0,
   "cold_start_ms": 2340,
   "peak_memory_mb": 312.5
 }
@@ -55,7 +57,6 @@ uv run python src/main.py --task <task_name>
 | Metric | Unit | Description |
 |--------|------|-------------|
 | Latency | ms | End-to-end wall-clock time (`total_duration_ms`) |
-| Accuracy | % | Correctness of `answer` against golden dataset |
 | Tokens | count | Total tokens consumed (prompt + completion) |
 | Packaging Size | MB | Installed size of framework + dependencies |
 
@@ -64,11 +65,20 @@ uv run python src/main.py --task <task_name>
 | Metric | Unit | Description |
 |--------|------|-------------|
 | LLM Call Count | count | Number of LLM round-trips (`llm_calls`) |
+| Tool Calls | count | Number of tool invocations (`tool_calls`) |
+| Tools Used | list | List of tool names invoked during the run |
+| Skill Activations | count | Number of skills activated during the run (Pattern 3+) |
 | Peak Memory | MB | Max RSS during execution |
 | Lines of Code | LOC | Implementation size (src only) |
 | Dependency Count | count | Direct + transitive dependencies |
 | Cold Start | ms | Time from process start to first LLM call |
-| Determinism | % | Output consistency across repeated runs |
+
+### Future/Optional Metrics
+
+| Metric | Unit | Description | Notes |
+|--------|------|-------------|-------|
+| Accuracy | % | Correctness of `answer` against golden dataset | Requires golden dataset infrastructure |
+| Determinism | % | Output consistency across repeated runs | Requires multi-run evaluation infrastructure |
 
 ## Metric Collection Methodology
 
@@ -76,6 +86,9 @@ uv run python src/main.py --task <task_name>
 |--------|-------------------|-------|
 | `total_duration_ms` | Agent code timer | Wall-clock from start to answer |
 | `llm_calls` | Agent code counter | Incremented per LLM invocation |
+| `tool_calls` | Agent code counter | Incremented per tool invocation |
+| `tools_used` | Agent code list | Names of tools invoked during execution |
+| `skill_activations` | Agent code counter | Count of skills activated (Pattern 3+) |
 | `prompt_tokens` | Ollama response `prompt_eval_count` | Summed across all LLM calls |
 | `completion_tokens` | Ollama response `eval_count` | Summed across all LLM calls |
 | `total_tokens` | `prompt_tokens + completion_tokens` | Computed |
@@ -84,7 +97,13 @@ uv run python src/main.py --task <task_name>
 | `packaging_size_mb` | `du -sk .venv/` | Installed venv size |
 | `loc` | `find src -name "*.py" -exec cat {} + \| wc -l` | Pattern's own src/ only; excludes `_shared/` |
 | `dependency_count` | `grep -c 'name = ' uv.lock` | Total packages in lockfile (direct + transitive) |
-| `determinism` | Compare answers across N runs | % identical answers |
+
+### Future/Optional Collection
+
+| Metric | Collection Method | Notes |
+|--------|-------------------|-------|
+| `accuracy` | Compare against golden dataset | Requires golden answers infrastructure |
+| `determinism` | Compare answers across N runs | % identical answers; requires multi-run harness |
 
 ## Scoring
 
@@ -94,8 +113,9 @@ Each metric is normalized to a 0–1 scale and weighted:
 score = Σ (weight_i × normalized_metric_i)
 ```
 
-Lower is better for: latency, tokens, packaging size, LLM call count, peak memory, LOC, dependency count, cold start.
-Higher is better for: accuracy, determinism.
+Lower is better for: latency, tokens, packaging size, LLM call count, tool calls, peak memory, LOC, dependency count, cold start.
+
+**Future (when implemented):** Higher is better for: accuracy, determinism.
 
 Final scores are reported per-framework, per-pattern, and as an aggregate.
 
