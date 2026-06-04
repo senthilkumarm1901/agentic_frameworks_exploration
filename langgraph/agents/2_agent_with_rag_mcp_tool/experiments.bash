@@ -16,6 +16,8 @@ PATTERN="agent_with_rag_mcp_tool"
 #   OLLAMA_MODEL="qwen3:8b" ./experiments.bash
 export OLLAMA_MODEL="${OLLAMA_MODEL:-qwen3.5:35b-a3b-coding-nvfp4}"
 export OLLAMA_BASE_URL="${OLLAMA_BASE_URL:-http://localhost:11434}"
+LOG_FILE_NAME="${LOG_FILE_NAME:-logs.txt}"
+LOG_FILE="$(pwd)/$LOG_FILE_NAME"
 
 # =============================================================================
 # STATIC METRICS (captured once per setup)
