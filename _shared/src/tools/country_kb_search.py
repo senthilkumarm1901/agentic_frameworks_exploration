@@ -3,6 +3,22 @@
 Indexes markdown fact files about countries and performs semantic search.
 """
 
+import logging
+import os
+import warnings
+
+# Suppress verbose logging from dependencies BEFORE importing them
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+os.environ["GRPC_VERBOSITY"] = "ERROR"
+os.environ["GRPC_TRACE"] = ""
+
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", message=".*clean_up_tokenization_spaces.*")
+
+for _logger_name in ["httpx", "httpcore", "sentence_transformers", "transformers", "milvus", "pymilvus"]:
+    logging.getLogger(_logger_name).setLevel(logging.WARNING)
+
 from pathlib import Path
 from typing import Optional
 
