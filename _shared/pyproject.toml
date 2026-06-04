@@ -18,6 +18,10 @@ rag = [
     "pymilvus[milvus_lite]>=2.4",
     "sentence-transformers>=3.0",
 ]
+# Wiki compilation dependencies (one-time LLM generation)
+wiki = [
+    "langchain-ollama>=0.3",
+]
 
 [build-system]
 requires = ["hatchling"]
