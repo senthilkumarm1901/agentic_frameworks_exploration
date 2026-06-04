@@ -11,8 +11,13 @@ Tools:
     - country_kb_search_tool: Search country knowledge base for qualitative facts
 """
 
+import logging
 import sys
 from pathlib import Path
+
+# Suppress verbose MCP server logging
+logging.getLogger("mcp").setLevel(logging.WARNING)
+logging.getLogger("mcp.server").setLevel(logging.WARNING)
 
 # Add parent directory to path for tools package access
 sys.path.insert(0, str(Path(__file__).parent.parent))
