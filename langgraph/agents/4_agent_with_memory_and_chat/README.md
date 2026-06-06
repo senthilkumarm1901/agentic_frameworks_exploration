@@ -2,6 +2,49 @@
 
 **Building on P3** — Adds conversation memory (short-term + long-term) and an interactive chat interface.
 
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             PATTERN 4 ARCHITECTURE                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌──────────────────────────────┐     ┌──────────────────────────────┐     │
+│  │   Terminal Chat REPL         │     │   Memory Layer               │     │
+│  │   👤 User Input              │     │   Short-Term: MemorySaver    │     │
+│  │   📺 Display                 │     │   Long-Term: session.json    │     │
+│  └──────────────────────────────┘     └──────────────────────────────┘     │
+│              │                                    │                         │
+│              ▼                                    ▼                         │
+│  ┌────────────────────────────────────────────────────────────────────┐    │
+│  │                    ReAct Agent (LangGraph)                         │    │
+│  │   System Prompt + Memory Block + Skill Metadata                    │    │
+│  │   checkpointer=MemorySaver (short-term message history)            │    │
+│  └────────────────────────────────────────────────────────────────────┘    │
+│              │                              │                               │
+│              ▼                              ▼                               │
+│  ┌─────────────────────┐        ┌─────────────────────────────────────┐    │
+│  │   📋 Skills         │        │   FastMCP Server (3 tools)          │    │
+│  │   (loaded on demand)│        │   🔍 country_lookup  🧮 calculator  │    │
+│  │   4 skill files     │        │   📚 kb_search (Milvus RAG)         │    │
+│  └─────────────────────┘        └─────────────────────────────────────┘    │
+│                                              │                              │
+│                                              ▼                              │
+│                        ┌─────────────────────────────────────────────┐     │
+│                        │        Vector Database (Milvus-Lite)        │     │
+│                        │   ┌───────────────────────────────────┐     │     │
+│                        │   │ sentence-transformers embeddings  │     │     │
+│                        │   │ all-MiniLM-L6-v2 (384 dims)       │     │     │
+│                        │   └───────────────────────────────────┘     │     │
+│                        │   20 country documents indexed              │     │
+│                        └─────────────────────────────────────────────┘     │
+│                                              ▲                              │
+│                        ┌─────────────────────┴───────────────────────┐     │
+│                        │        Raw Sources (immutable)              │     │
+│                        │   country_kb/*.md    countries.json         │     │
+│                        └─────────────────────────────────────────────┘     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
 ## What's New in Pattern 4
 
 | Feature | P3 | P4 |
