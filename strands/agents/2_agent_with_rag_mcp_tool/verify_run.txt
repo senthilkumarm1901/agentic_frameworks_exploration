@@ -1,0 +1,56 @@
+================================================================================
+STATIC METRICS (captured once per setup)
+================================================================================
+timestamp: 2026-06-14T07:54:32Z
+framework: strands
+pattern: agent_with_rag_mcp_tool
+packaging_size_mb: 997.06
+loc: 352
+dependency_count: 304
+
+================================================================================
+RUN METRICS (appended per execution)
+================================================================================
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T07:54:33Z
+task: country_analysis
+question: What are the main geographic features of Australia?
+model: qwen3.5:35b-a3b-coding-nvfp4
+duration_ms: 56765
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: What are the main geographic features of Australia?
+  [06/14/26 13:24:49] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /Users/senthilkumar.m/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 62814                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 13:24:57] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 13:25:29] INFO     MilvusLite server stopped for server_manager.py:101
+                               /Users/senthilkumar.m/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 62814)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Based on the information gathered from the country knowledge base, here are the main geographic features of Australia:\n\n## Major Geographic Features of Australia\n\n1. **The Outback** - This vast wilderness area covers most of Australia's interior and is one of the largest remote wilderness areas in the world.\n\n2. **Arid and Semi-Arid Landscape** - Australia is the driest inhabited continent, with approximately 70% of its landmass classified as arid or semi-arid terrain.\n\n3. **Great Barrier Reef** - Located off Australia's northeast coast, this is the world's largest coral reef system and is even visible from space.\n\n4. **Unique Continental Status** - Australia is the only country that is also a continent, making it both the world's largest island and smallest continent.\n\nThese features define Australia's distinctive geographic character, with its vast interior deserts, unique coastal ecosystems, and its status as an island continent. The arid climate dominates the landscape, while the Great Barrier Reef represents one of the world's most significant natural marine features.",
+    "framework": "strands",
+    "pattern": "agent_with_rag_mcp_tool",
+    "llm_calls": 7,
+    "total_duration_ms": 54528,
+    "prompt_tokens": 12204,
+    "completion_tokens": 1119,
+    "total_tokens": 13323,
+    "tool_calls": 6,
+    "cold_start_ms": 2016,
+    "peak_memory_mb": 44.13
+  }
+

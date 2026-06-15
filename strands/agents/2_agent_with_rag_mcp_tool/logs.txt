@@ -1,0 +1,171 @@
+================================================================================
+STATIC METRICS (captured once per setup)
+================================================================================
+timestamp: 2026-06-14T10:17:18Z
+framework: strands
+pattern: agent_with_rag_mcp_tool
+packaging_size_mb: 996.81
+loc: 368
+dependency_count: 304
+
+================================================================================
+RUN METRICS (appended per execution)
+================================================================================
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T10:17:19Z
+task: country_analysis
+question: What are the main geographic features of Australia?
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #1 | 2026-06-14 15:48:04
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: What are the main geographic features of Australia?
+Answer:
+Based on the knowledge base search, here are the main geographic features of Australia:
+
+## Major Geographic Features
+
+**1. The Great Barrier Reef**
+- Located off Australia's northeast coast
+- The world's largest coral reef system
+- Visible from space
+- One of the most significant marine ecosystems globally
+
+**2. The Australian Outback**
+- Covers most of the continent's interior
+- One of the largest remote wilderness areas in the world
+- Characterized by vast, sparsely populated regions
+
+**3. Arid and Semi-Arid Land**
+- Australia is the driest inhabited continent
+- Approximately 70% of its landmass is classified as arid or semi-arid
+- This unique characteristic distinguishes it from other continents
+
+**4. Continental Status**
+- Australia is the only country that is also a continent
+- Makes it the world's largest island
+- Also the world's smallest continent
+- This dual status is unique globally
+
+These geographic features contribute to Australia's distinct ecological and environmental characteristics, including its unique wildlife and challenging climate conditions in many regions.
+LLM Calls: 3
+Tool Calls: 2
+Tool Calls Detail:
+  - country_kb_search_tool(query="Australia geographic features", top_k="5") -> [Australia] (relevance: 0.368) The Australian Outback covers most of the continent's interior and is one of the largest remote wilderness areas in the world.
+[Australia] (relevance: 0.437) Australia i
+  - country_kb_search_tool(query="Australia Great Barrier Reef deserts mountain ranges rivers", top_k="5") -> [Australia] (relevance: 0.456) The Great Barrier Reef off Australia's northeast coast is the world's largest coral reef system, visible from space.
+[Australia] (relevance: 0.533) The Australian Outbac
+Duration: 40060ms
+Status: SUCCESS
+========================================================================
+duration_ms: 45267
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: What are the main geographic features of Australia?
+  [06/14/26 15:47:42] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+  [06/14/26 15:47:43] INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 50036                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 15:47:47] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 15:48:04] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 50036)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Based on the knowledge base search, here are the main geographic features of Australia:\n\n## Major Geographic Features\n\n**1. The Great Barrier Reef**\n- Located off Australia's northeast coast\n- The world's largest coral reef system\n- Visible from space\n- One of the most significant marine ecosystems globally\n\n**2. The Australian Outback**\n- Covers most of the continent's interior\n- One of the largest remote wilderness areas in the world\n- Characterized by vast, sparsely populated regions\n\n**3. Arid and Semi-Arid Land**\n- Australia is the driest inhabited continent\n- Approximately 70% of its landmass is classified as arid or semi-arid\n- This unique characteristic distinguishes it from other continents\n\n**4. Continental Status**\n- Australia is the only country that is also a continent\n- Makes it the world's largest island\n- Also the world's smallest continent\n- This dual status is unique globally\n\nThese geographic features contribute to Australia's distinct ecological and environmental characteristics, including its unique wildlife and challenging climate conditions in many regions.",
+    "framework": "strands",
+    "pattern": "agent_with_rag_mcp_tool",
+    "llm_calls": 3,
+    "total_duration_ms": 40060,
+    "prompt_tokens": 4113,
+    "completion_tokens": 559,
+    "total_tokens": 4672,
+    "tool_calls": 2,
+    "cold_start_ms": 5008,
+    "peak_memory_mb": 44.06
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T10:18:04Z
+task: country_analysis
+question: Describe the political system of Germany.
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #2 | 2026-06-14 15:48:25
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Describe the political system of Germany.
+Answer:
+Germany operates as a **federal parliamentary republic**. In this system:
+
+- The **Federal President** (Bundespräsident) serves as the head of state, with largely ceremonial duties.
+- The **Chancellor** (Bundeskanzler) is the head of government and holds the primary executive power.
+- The legislative branch consists of two houses:
+  - The **Bundestag** (Federal Diet), directly elected by the people.
+  - The **Bundesrat** (Federal Council), representing the 16 federal states (Länder).
+- Germany follows a system of **federalism**, where powers are divided between the national government and the states.
+- The country has a multi-party system, with the **Basic Law** (Grundgesetz) serving as its constitution.
+
+This information is based on the country knowledge base search results.
+LLM Calls: 2
+Tool Calls: 1
+Tool Calls Detail:
+  - country_kb_search_tool(query="Germany political system government structure", top_k="3") -> [Germany] (relevance: 0.410) Germany is the most populous country in the European Union and operates as a federal parliamentary republic.
+[Australia] (relevance: 0.588) The country operates as a const
+Duration: 18731ms
+Status: SUCCESS
+========================================================================
+duration_ms: 21088
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: Describe the political system of Germany.
+  [06/14/26 15:48:12] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 50058                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 15:48:16] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 15:48:25] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 50058)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Germany operates as a **federal parliamentary republic**. In this system:\n\n- The **Federal President** (Bundespr\u00e4sident) serves as the head of state, with largely ceremonial duties.\n- The **Chancellor** (Bundeskanzler) is the head of government and holds the primary executive power.\n- The legislative branch consists of two houses:\n  - The **Bundestag** (Federal Diet), directly elected by the people.\n  - The **Bundesrat** (Federal Council), representing the 16 federal states (L\u00e4nder).\n- Germany follows a system of **federalism**, where powers are divided between the national government and the states.\n- The country has a multi-party system, with the **Basic Law** (Grundgesetz) serving as its constitution.\n\nThis information is based on the country knowledge base search results.",
+    "framework": "strands",
+    "pattern": "agent_with_rag_mcp_tool",
+    "llm_calls": 2,
+    "total_duration_ms": 18731,
+    "prompt_tokens": 2380,
+    "completion_tokens": 323,
+    "total_tokens": 2703,
+    "tool_calls": 1,
+    "cold_start_ms": 2147,
+    "peak_memory_mb": 44.02
+  }
+
