@@ -164,3 +164,178 @@ Duration: 85372ms
 }
 ```
 
+## Turn 5
+Question: Build a comprehensive profile of India
+Duration: 52522ms
+```json
+{
+    "answer": "### Comprehensive Profile: India\n\n#### Key Statistics\n| Metric | Value |\n|--------|-------|\n| GDP | $3.64 trillion USD |\n| Population | 1,438.1 million |\n| Area | 2,973,190 km\u00b2 |\n| GDP per Capita | $2,531.10 USD |\n| Population Density | 483.7 people/km\u00b2 |\n\n#### Notable Facts\n1. India's IT services sector\u2014centered in Bengaluru, Hyderabad, and Chennai\u2014is a major driver of its service-based economy.\n2. India boasts the world's third-largest scientific and technical workforce.\n\n#### Summary\nIndia is a rapidly growing economic powerhouse with a massive population, a diverse economy anchored by its IT sector, and a rich cultural and historical legacy.",
+    "framework": "langgraph",
+    "pattern": "agent_with_memory_and_chat",
+    "turn_count": 5,
+    "llm_calls": 4,
+    "total_duration_ms": 52522,
+    "prompt_tokens": 6923,
+    "completion_tokens": 598,
+    "total_tokens": 7521,
+    "tool_calls": 7,
+    "skill_activations": 1,
+    "tools_used": [
+        "activate_skill",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool"
+    ],
+    "status": "success"
+}
+```
+
+## Turn 6
+Question: Compare India and Japan
+Duration: 79890ms
+```json
+{
+    "answer": "### India vs. Japan: Comparative Analysis\n\n| Metric | India | Japan |\n|--------|-------|-------|\n| **GDP** | $3.64 trillion | $4.21 trillion |\n| **Population** | 1,438.1 million | 124.5 million |\n| **Area** | 2,973,190 km\u00b2 | 364,569 km\u00b2 |\n| **GDP per Capita** | $2,531 | $33,815 |\n| **Population Density** | 484 people/km\u00b2 | 342 people/km\u00b2 |\n\n#### Key Insights\n- Japan's economy is significantly larger per capita ($33,815 vs. $2,531), reflecting higher productivity and development despite a smaller population.\n- India's massive population (over 1.4 billion) and larger land area contrast sharply with Japan's compact, densely populated islands.\n- Both nations are global leaders in technology: India boasts the world's third-largest scientific workforce, while Japan dominates automotive manufacturing with giants like Toyota and Honda.\n\nIndia's scale offers vast market potential, whereas Japan exemplifies high-income efficiency and technological innovation.",
+    "framework": "langgraph",
+    "pattern": "agent_with_memory_and_chat",
+    "turn_count": 6,
+    "llm_calls": 8,
+    "total_duration_ms": 79890,
+    "prompt_tokens": 17858,
+    "completion_tokens": 4562,
+    "total_tokens": 22420,
+    "tool_calls": 19,
+    "skill_activations": 2,
+    "tools_used": [
+        "activate_skill",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "activate_skill",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool"
+    ],
+    "status": "success"
+}
+```
+
+## Turn 7
+Question: Same for Brazil
+Duration: 32189ms
+```json
+{
+    "answer": "### India vs. Brazil: Comparative Analysis\n\n| Metric | India | Brazil |\n|--------|-------|--------|\n| **GDP** | $3.64 trillion | $2.19 trillion |\n| **Population** | 1,438.1 million | 211.1 million |\n| **Area** | 2,973,190 km\u00b2 | 8,358,140 km\u00b2 |\n| **GDP per Capita** | $2,531 | $10,374 |\n| **Population Density** | 484 people/km\u00b2 | 25 people/km\u00b2 |\n\n#### Key Insights\n- **Economic Scale**: India's total GDP is significantly larger ($3.64T vs. $2.19T), but Brazil's GDP per capita is over four times higher ($10,374 vs. $2,531), indicating higher average income levels.\n- **Population & Land**: India has a massive population (over 1.4 billion) packed into a smaller area, while Brazil spans nearly three times India's land area with a much lower population density.\n- **Natural Resources**: Brazil is home to the world's most diverse ecosystem and contains about 60% of the Amazon rainforest, a critical global carbon sink. India, by contrast, is a rapidly industrializing economy with a massive scientific workforce.\n- **Cultural Distinction**: Brazil is the only Portuguese-speaking nation in the Americas and the largest country in South America by both area and population.\n\nWhile India leads in total economic output and population scale, Brazil offers immense natural wealth and a higher standard of living per person.",
+    "framework": "langgraph",
+    "pattern": "agent_with_memory_and_chat",
+    "turn_count": 7,
+    "llm_calls": 11,
+    "total_duration_ms": 32189,
+    "prompt_tokens": 29259,
+    "completion_tokens": 5538,
+    "total_tokens": 34797,
+    "tool_calls": 25,
+    "skill_activations": 2,
+    "tools_used": [
+        "activate_skill",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "activate_skill",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool"
+    ],
+    "status": "success"
+}
+```
+
+## Turn 8
+Question: compare India with the most populous European country
+Duration: 76433ms
+```json
+{
+    "answer": "### India vs. Germany (Most Populous European Country)\n\n| Metric | India | Germany |\n|--------|-------|---------|\n| **GDP** | $3.64 trillion | $4.56 trillion |\n| **Population** | 1,438.1 million | 83.3 million |\n| **Area** | 2,973,190 km\u00b2 | 349,430 km\u00b2 |\n| **GDP per Capita** | $2,531 | $54,742 |\n| **Population Density** | 484 people/km\u00b2 | 238 people/km\u00b2 |\n\n#### Key Insights\n- **Economic Power**: Germany's total GDP ($4.56T) exceeds India's ($3.64T), and its GDP per capita is over **21 times higher** ($54,742 vs. $2,531), reflecting a highly developed, high-income economy.\n- **Demographics**: India's population is massive (over 1.4 billion), roughly **17 times larger** than Germany's (83.3 million), yet India's land area is also significantly larger.\n- **Density**: Despite India's larger area, its population density (484/km\u00b2) is double that of Germany (238/km\u00b2) due to the sheer scale of its population.\n- **Cultural & Political Context**: Germany is the most populous country in the European Union and a federal parliamentary republic with a rich classical music heritage. India is a global leader in science and technology, boasting the world's third-largest scientific workforce.\n\nWhile India offers immense market scale and a growing economy, Germany represents a mature, high-income industrial powerhouse with superior per-capita wealth.",
+    "framework": "langgraph",
+    "pattern": "agent_with_memory_and_chat",
+    "turn_count": 8,
+    "llm_calls": 14,
+    "total_duration_ms": 76433,
+    "prompt_tokens": 43738,
+    "completion_tokens": 6855,
+    "total_tokens": 50593,
+    "tool_calls": 36,
+    "skill_activations": 2,
+    "tools_used": [
+        "activate_skill",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "activate_skill",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_lookup_tool",
+        "country_kb_search_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool",
+        "calculator_tool"
+    ],
+    "status": "success"
+}
+```
+

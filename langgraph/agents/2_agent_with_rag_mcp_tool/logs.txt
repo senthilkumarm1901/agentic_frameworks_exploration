@@ -53,7 +53,7 @@ output:
   [06/01/26 10:49:57] INFO     Loading faiss.                        loader.py:156
                       INFO     Successfully loaded faiss.            loader.py:158
                       INFO     MilvusLite server started for  server_manager.py:77
-                               /Users/senthilkumar.m/dev/lear                     
+                               /path/to/dev/lear                     
                                nings-data/agentic_frameworks_                     
                                exploration/_shared/vector_db/                     
                                country_kb.db on port 63634                        
@@ -157,7 +157,9 @@ output:
   I0601 10:50:04.130269 1685175 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(17, generation: 1)
   I0601 10:50:04.130298 1685175 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(16, generation: 1)
   I0601 10:50:04.130300 1685175 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(9, generation: 1)
-  Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7008.65it/s]
+  
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7008.65it/s]
                       INFO     HTTP Request: HEAD                  _client.py:1025
                                https://huggingface.co/sentence-tra                
                                nsformers/all-MiniLM-L6-v2/resolve/                
@@ -248,7 +250,10 @@ output:
                                https://huggingface.co/api/models/s                
                                entence-transformers/all-MiniLM-L6-                
                                v2 "HTTP/1.1 200 OK"                               
-  Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.01it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.01it/s]
+  
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|██████████| 1/1 [/path/tos]
+Batches: 100%|██████████| 1/1 [00:00<00:00,  5.01it/s]
   [06/01/26 10:50:08] INFO     Processing request of type            server.py:727
                                ListToolsRequest                                   
                       INFO     MilvusLite server stopped for server_manager.py:101
@@ -315,7 +320,7 @@ output:
   [INFO] Question: Describe the political system of Germany.
   [06/01/26 10:50:21] INFO     Processing request of type            server.py:727
                                ListToolsRequest                                   
-  [06/01/26 10:50:24] INFO     Processing request of type            server.py:727
+  [06/01/26 10:50:24] INFO     /path/to type            server.py:727
                                CallToolRequest                                    
                       INFO     Loading faiss.                        loader.py:156
                       INFO     Successfully loaded faiss.            loader.py:158
@@ -424,7 +429,9 @@ output:
   I0601 10:50:32.385929 1686051 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(17, generation: 1)
   I0601 10:50:32.385985 1686051 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(16, generation: 1)
   I0601 10:50:32.385988 1686051 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(9, generation: 1)
-  Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 15838.59it/s]
+  
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 15838.59it/s]
                       INFO     HTTP Request: HEAD                  _client.py:1025
                                https://huggingface.co/sentence-tra                
                                nsformers/all-MiniLM-L6-v2/resolve/                
@@ -512,10 +519,12 @@ output:
                                e6d2e6f8de32d1f16199bf/1_Pooling%2F                
                                config.json "HTTP/1.1 200 OK"                      
                       INFO     HTTP Request: GET                   _client.py:1025
-                               https://huggingface.co/api/models/s                
+                               /path/too/api/models/s                
                                entence-transformers/all-MiniLM-L6-                
                                v2 "HTTP/1.1 200 OK"                               
-  Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 12.90it/s]
+  
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|██████████| 1/1 [00:00<00:00, 12.90it/s]
   [06/01/26 10:50:36] INFO     Processing request of type            server.py:727
                                ListToolsRequest                                   
                       INFO     MilvusLite server stopped for server_manager.py:101
