@@ -1,14 +1,12 @@
-# Evaluation Harness
+# Evaluation
+
+The tracked evaluation output for this folder is the final report at [eval/reports/Final_Evaluation_Report.md](eval/reports/Final_Evaluation_Report.md).
+
 
 ## Overview
 
-This is the evaluation harness for comparing **3 agentic frameworks** across **6 patterns**, totalling 18 applications. The harness discovers each app, invokes it via a standardized CLI contract, collects structured JSON output, and generates comparison reports.
+This is the evaluation harness for comparing **3 agentic frameworks** across **4 patterns**, totalling 18 applications. The harness discovers each app, invokes it via a standardized CLI contract, collects structured JSON output, and generates comparison reports.
 
-| Framework | Apps | Patterns |
-|-----------|------|----------|
-| LangGraph | 6 | All 6 |
-| AWS Strands Agents | 6 | All 6 |
-| Hermes | 6 | All 6 |
 
 ## Frameworks Under Evaluation
 
@@ -105,19 +103,6 @@ uv run python src/main.py --task <task_name>
 | `accuracy` | Compare against golden dataset | Requires golden answers infrastructure |
 | `determinism` | Compare answers across N runs | % identical answers; requires multi-run harness |
 
-## Scoring
-
-Each metric is normalized to a 0–1 scale and weighted:
-
-```
-score = Σ (weight_i × normalized_metric_i)
-```
-
-Lower is better for: latency, tokens, packaging size, LLM call count, tool calls, peak memory, LOC, dependency count, cold start.
-
-**Future (when implemented):** Higher is better for: accuracy, determinism.
-
-Final scores are reported per-framework, per-pattern, and as an aggregate.
 
 ## Evaluation Harness Components
 
@@ -138,25 +123,3 @@ make eval FRAMEWORK=langgraph
 # Generate report from collected results
 make report
 ```
-
-## Pattern Catalog
-
-| # | Pattern | Type | Description |
-|---|---------|------|-------------|
-| 1 | agent_with_multiple_mcp_tools | Agent | Agent using multiple MCP tools |
-| 2 | agent_with_rag_mcp_tool | Agent | Extending Agent Pattern 1 (which already has multiple tools) with a RAG MCP Tool |
-| 3 | agent_with_mcp_tools_and_skills | Agent | Extending Agent Pattern 2 with Skills |
-| 4 | workflow_2_layer_sequential | Workflow | Two-layer sequential workflow |
-| 5 | workflow_3_layer_routing | Workflow | Three-layer routing workflow |
-| 6 | workflow_2_layer_parallelization | Workflow | Two-layer parallel workflow |
-
-## Example Tasks
-
-| Task Name | Pattern | Description |
-|-----------|---------|-------------|
-| country_analysis | agent_with_multiple_mcp_tools | Multi-tool orchestration questions using country_lookup_tool and calculator_tool (e.g., population density, GDP per capita comparisons) |
-| TBD | agent_with_rag_mcp_tool | To be defined |
-| TBD | agent_with_mcp_tools_and_skills | To be defined |
-| TBD | workflow_2_layer_sequential | To be defined |
-| TBD | workflow_3_layer_routing | To be defined |
-| TBD | workflow_2_layer_parallelization | To be defined |
