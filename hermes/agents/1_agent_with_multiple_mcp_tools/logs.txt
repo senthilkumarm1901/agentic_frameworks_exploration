@@ -1,0 +1,234 @@
+================================================================================
+STATIC METRICS (captured once per setup)
+================================================================================
+timestamp: 2026-06-14T13:53:57Z
+framework: hermes
+pattern: agent_with_multiple_mcp_tools
+packaging_size_mb: 49.34
+loc: 389
+dependency_count: 101
+
+================================================================================
+RUN METRICS (appended per execution)
+================================================================================
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T13:54:22Z
+task: country_analysis
+question: What is the population density of Japan in people per square kilometer?
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #1 | 2026-06-14 19:24:32
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: What is the population density of Japan in people per square kilometer?
+Answer:
+The population density of Japan is approximately **341.5 people per square kilometer**.
+
+Here are the specific numbers used in this calculation:
+- **Population**: 124.5 million people (124,500,000)
+- **Area**: 364,569 square kilometers
+- **Calculation**: 124,500,000 ÷ 364,569 = **341.5 people per square kilometer**
+LLM Calls: 3
+Tool Calls: 3
+Tool Calls Detail:
+  - country_lookup_tool(country="Japan", metric="population_million") -> The population million of Japan is 124.5 million people
+  - country_lookup_tool(country="Japan", metric="area_sq_km") -> The area sq km of Japan is 364569 square kilometers
+  - calculator_tool(expression="124.5 * 1000000 / 364569") -> Result: 341.4991
+Duration: 8065ms
+Status: SUCCESS
+========================================================================
+duration_seconds: 10.122660000
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: What is the population density of Japan in people per square kilometer?
+  Processing request of type ListToolsRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "The population density of Japan is approximately **341.5 people per square kilometer**.\n\nHere are the specific numbers used in this calculation:\n- **Population**: 124.5 million people (124,500,000)\n- **Area**: 364,569 square kilometers\n- **Calculation**: 124,500,000 \u00f7 364,569 = **341.5 people per square kilometer**",
+    "framework": "hermes",
+    "pattern": "agent_with_multiple_mcp_tools",
+    "llm_calls": 3,
+    "total_duration_ms": 8065,
+    "prompt_tokens": 2829,
+    "completion_tokens": 424,
+    "total_tokens": 3253,
+    "tool_calls": 3,
+    "cold_start_ms": 1854,
+    "peak_memory_mb": 51.17
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T13:54:32Z
+task: country_analysis
+question: What is the ratio of GDP per capita between the United States and Japan? Calculate it precisely
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #2 | 2026-06-14 19:24:50
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: What is the ratio of GDP per capita between the United States and Japan? Calculate it precisely
+Answer:
+Here's the precise calculation of the GDP per capita ratio between the United States and Japan:
+
+**Data Retrieved:**
+- **United States:** GDP = $27.29 trillion, Population = 336.8 million
+- **Japan:** GDP = $4.21 trillion, Population = 124.5 million
+
+**GDP Per Capita Calculations:**
+- **United States:** $27.29 trillion ÷ 336.8 million = **$81,027.32 per person**
+- **Japan:** $4.21 trillion ÷ 124.5 million = **$33,815.26 per person**
+
+**Ratio Calculation:**
+Ratio = US GDP per capita ÷ Japan GDP per capita
+Ratio = $81,027.32 ÷ $33,815.26 = **2.396**
+
+**Answer:** The United States has approximately **2.4 times higher GDP per capita** than Japan.
+LLM Calls: 3
+Tool Calls: 6
+Tool Calls Detail:
+  - country_lookup_tool(country="United States", metric="gdp_trillion") -> The gdp trillion of United States is 27.29 trillion USD
+  - country_lookup_tool(country="Japan", metric="gdp_trillion") -> The gdp trillion of Japan is 4.21 trillion USD
+  - country_lookup_tool(country="United States", metric="population_million") -> The population million of United States is 336.8 million people
+  - country_lookup_tool(country="Japan", metric="population_million") -> The population million of Japan is 124.5 million people
+  - calculator_tool(expression="2729000000000 / 336800000") -> Result: 8102.7316
+  - calculator_tool(expression="4210000000000 / 124500000") -> Result: 33815.261
+Duration: 15783ms
+Status: SUCCESS
+========================================================================
+duration_seconds: 17.845523000
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: What is the ratio of GDP per capita between the United States and Japan? Calculate it precisely
+  Processing request of type ListToolsRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Here's the precise calculation of the GDP per capita ratio between the United States and Japan:\n\n**Data Retrieved:**\n- **United States:** GDP = $27.29 trillion, Population = 336.8 million\n- **Japan:** GDP = $4.21 trillion, Population = 124.5 million\n\n**GDP Per Capita Calculations:**\n- **United States:** $27.29 trillion \u00f7 336.8 million = **$81,027.32 per person**\n- **Japan:** $4.21 trillion \u00f7 124.5 million = **$33,815.26 per person**\n\n**Ratio Calculation:**\nRatio = US GDP per capita \u00f7 Japan GDP per capita\nRatio = $81,027.32 \u00f7 $33,815.26 = **2.396**\n\n**Answer:** The United States has approximately **2.4 times higher GDP per capita** than Japan.",
+    "framework": "hermes",
+    "pattern": "agent_with_multiple_mcp_tools",
+    "llm_calls": 3,
+    "total_duration_ms": 15783,
+    "prompt_tokens": 3168,
+    "completion_tokens": 790,
+    "total_tokens": 3958,
+    "tool_calls": 6,
+    "cold_start_ms": 1854,
+    "peak_memory_mb": 51.18
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T13:54:50Z
+task: country_analysis
+question: What is the GDP per capita of Germany in trillion USD per million people?
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #3 | 2026-06-14 19:25:01
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: What is the GDP per capita of Germany in trillion USD per million people?
+Answer:
+
+LLM Calls: 3
+Tool Calls: 3
+Tool Calls Detail:
+  - country_lookup_tool(country="Germany", metric="gdp_trillion") -> The gdp trillion of Germany is 4.56 trillion USD
+  - country_lookup_tool(country="Germany", metric="population_million") -> The population million of Germany is 83.3 million people
+  - calculator_tool(expression="4.56 / 83.3") -> Result: 0.0547
+Duration: 7885ms
+Status: SUCCESS
+========================================================================
+duration_seconds: 10.930828000
+status: success
+output:
+     Building hermes-augmented-llm @ file:///path/to/dev/learnings-data/agentic_frameworks_exploration/hermes/agents/1_agent_with_multiple_mcp_tools
+        Built hermes-augmented-llm @ file:///path/to/dev/learnings-data/agentic_frameworks_exploration/hermes/agents/1_agent_with_multiple_mcp_tools
+  Uninstalled 1 package in 4ms
+  Installed 1 package in 5ms
+  [INFO] Task: country_analysis
+  [INFO] Question: What is the GDP per capita of Germany in trillion USD per million people?
+  Processing request of type ListToolsRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "",
+    "framework": "hermes",
+    "pattern": "agent_with_multiple_mcp_tools",
+    "llm_calls": 3,
+    "total_duration_ms": 7885,
+    "prompt_tokens": 2817,
+    "completion_tokens": 360,
+    "total_tokens": 3177,
+    "tool_calls": 3,
+    "cold_start_ms": 1877,
+    "peak_memory_mb": 50.95
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T13:55:01Z
+task: country_analysis
+question: Which country has a larger population, India or China?
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #4 | 2026-06-14 19:25:09
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Which country has a larger population, India or China?
+Answer:
+Based on the data retrieved:
+
+- **India's population:** 1,438.1 million
+- **China's population:** 1,410.7 million
+
+Comparing these figures, India has a larger population than China.
+LLM Calls: 2
+Tool Calls: 2
+Tool Calls Detail:
+  - country_lookup_tool(country="India", metric="population_million") -> The population million of India is 1438.1 million people
+  - country_lookup_tool(country="China", metric="population_million") -> The population million of China is 1410.7 million people
+Duration: 6138ms
+Status: SUCCESS
+========================================================================
+duration_seconds: 8.232963000
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: Which country has a larger population, India or China?
+  Processing request of type ListToolsRequest
+  Processing request of type CallToolRequest
+  Processing request of type CallToolRequest
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Based on the data retrieved:\n\n- **India's population:** 1,438.1 million\n- **China's population:** 1,410.7 million\n\nComparing these figures, India has a larger population than China.",
+    "framework": "hermes",
+    "pattern": "agent_with_multiple_mcp_tools",
+    "llm_calls": 2,
+    "total_duration_ms": 6138,
+    "prompt_tokens": 1786,
+    "completion_tokens": 193,
+    "total_tokens": 1979,
+    "tool_calls": 2,
+    "cold_start_ms": 1888,
+    "peak_memory_mb": 51.15
+  }
+

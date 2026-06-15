@@ -1,0 +1,144 @@
+================================================================================
+STATIC METRICS (captured once per setup)
+================================================================================
+timestamp: 2026-06-14T14:10:05Z
+framework: hermes
+pattern: agent_with_rag_mcp_tool
+packaging_size_mb: 967.18
+loc: 405
+dependency_count: 267
+
+================================================================================
+RUN METRICS (appended per execution)
+================================================================================
+
+========================================================================
+Experiment #1 | 2026-06-14 21:24:49
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: What are the main geographic features of Australia?
+Answer:
+Australia is a land of diverse and unique features. Here are its main geographic characteristics:
+
+- **Geography**: Australia is the only country that is also a continent, making it the world's largest island and smallest continent.
+- **Interior Terrain**: The Australian Outback covers most of the continent's interior and is one of the largest remote wilderness areas in the world.
+- **Climate and Aridity**: It is the driest inhabited continent, with approximately 70% of its landmass classified as arid or semi-arid.
+- **Coastal Features**: The Great Barrier Reef, located off the northeast coast, is the world's largest coral reef system and is visible from space.
+- **Unique Wildlife**: The country is home to more species of venomous snakes than any other continent, including the inland taipan, considered the world's most venomous snake.
+
+These geographic elements contribute to Australia's distinct ecological and environmental identity.
+LLM Calls: 2
+Tool Calls: 1
+Tool Calls Detail:
+  - country_kb_search_tool(query="main geographic features of Australia", top_k="5") -> [Australia] (relevance: 0.349) The Australian Outback covers most of the continent's interior and is one of the largest remote wilderness areas in the world.
+[Australia] (relevance: 0.400) Australia i
+Duration: 44737ms
+Status: SUCCESS
+========================================================================
+duration_ms: 51723
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: What are the main geographic features of Australia?
+  [06/14/26 21:24:22] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 55088                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 21:24:29] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 21:24:48] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 55088)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Australia is a land of diverse and unique features. Here are its main geographic characteristics:\n\n- **Geography**: Australia is the only country that is also a continent, making it the world's largest island and smallest continent.\n- **Interior Terrain**: The Australian Outback covers most of the continent's interior and is one of the largest remote wilderness areas in the world.\n- **Climate and Aridity**: It is the driest inhabited continent, with approximately 70% of its landmass classified as arid or semi-arid.\n- **Coastal Features**: The Great Barrier Reef, located off the northeast coast, is the world's largest coral reef system and is visible from space.\n- **Unique Wildlife**: The country is home to more species of venomous snakes than any other continent, including the inland taipan, considered the world's most venomous snake.\n\nThese geographic elements contribute to Australia's distinct ecological and environmental identity.",
+    "framework": "hermes",
+    "pattern": "agent_with_rag_mcp_tool",
+    "llm_calls": 2,
+    "total_duration_ms": 44737,
+    "prompt_tokens": 2561,
+    "completion_tokens": 329,
+    "total_tokens": 2890,
+    "tool_calls": 1,
+    "cold_start_ms": 6697,
+    "peak_memory_mb": 54.17
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T15:54:49Z
+task: country_analysis
+question: Describe the political system of Germany.
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #2 | 2026-06-14 21:25:12
+========================================================================
+Task: country_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Describe the political system of Germany.
+Answer:
+Based on the country knowledge base search, Germany operates as a **federal parliamentary republic**.
+
+In this political system:
+
+- **Federal structure**: Germany is organized as a federation with states (Länder) that have significant autonomy within the national framework
+- **Parliamentary system**: The government is formed by the parliamentary majority, meaning the Prime Minister (Chancellor) is typically selected from the party or coalition that holds the most seats in the legislature
+- **Republic form**: Germany does not have a monarchy; the head of state is a president selected according to constitutional procedures
+
+This system combines elements of federalism (power shared between national and regional governments) with parliamentary democracy (executive branch derives legitimacy from and is responsible to the legislature).
+LLM Calls: 2
+Tool Calls: 1
+Tool Calls Detail:
+  - country_kb_search_tool(query="Germany political system government structure", top_k="5") -> [Germany] (relevance: 0.410) Germany is the most populous country in the European Union and operates as a federal parliamentary republic.
+[Australia] (relevance: 0.588) The country operates as a const
+Duration: 20960ms
+Status: SUCCESS
+========================================================================
+duration_ms: 23318
+status: success
+output:
+  [INFO] Task: country_analysis
+  [INFO] Question: Describe the political system of Germany.
+  [06/14/26 21:24:57] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 55105                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 21:25:01] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 21:25:12] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 55105)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "Based on the country knowledge base search, Germany operates as a **federal parliamentary republic**.\n\nIn this political system:\n\n- **Federal structure**: Germany is organized as a federation with states (L\u00e4nder) that have significant autonomy within the national framework\n- **Parliamentary system**: The government is formed by the parliamentary majority, meaning the Prime Minister (Chancellor) is typically selected from the party or coalition that holds the most seats in the legislature\n- **Republic form**: Germany does not have a monarchy; the head of state is a president selected according to constitutional procedures\n\nThis system combines elements of federalism (power shared between national and regional governments) with parliamentary democracy (executive branch derives legitimacy from and is responsible to the legislature).",
+    "framework": "hermes",
+    "pattern": "agent_with_rag_mcp_tool",
+    "llm_calls": 2,
+    "total_duration_ms": 20960,
+    "prompt_tokens": 2534,
+    "completion_tokens": 372,
+    "total_tokens": 2906,
+    "tool_calls": 1,
+    "cold_start_ms": 2080,
+    "peak_memory_mb": 54.17
+  }
+
