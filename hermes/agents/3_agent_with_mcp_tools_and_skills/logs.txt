@@ -1,0 +1,439 @@
+================================================================================
+STATIC METRICS (captured once per setup)
+================================================================================
+timestamp: 2026-06-14T15:40:08Z
+framework: hermes
+pattern: agent_with_mcp_tools_and_skills
+packaging_size_mb: 966.39
+loc: 417
+dependency_count: 267
+
+================================================================================
+RUN METRICS (appended per execution)
+================================================================================
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T15:40:09Z
+task: comparison_japan_germany
+question: Compare the GDP and population of Japan and Germany. Which country has higher GDP per capita?
+expected_skill: country-comparison
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #1 | 2026-06-14 21:11:25
+========================================================================
+Task: comparison_japan_germany
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Compare the GDP and population of Japan and Germany. Which country has higher GDP per capita?
+Answer:
+## Comparison: Japan vs Germany
+
+| Metric             | Japan          | Germany        |
+|--------------------|----------------|----------------|
+| GDP (trillion USD) | $4.21          | $4.56          |
+| Population (million) | 124.5         | 83.3           |
+| GDP per capita (million USD) | $0.0338       | $0.0547        |
+
+**Key Insight:**  
+Germany has a higher GDP per capita (~$54,700) than Japan (~$33,800), despite Japan having a larger total GDP and population. This reflects Germany's smaller population and strong industrial export economy. Japan is known for its high literacy rate and leading position in automobile manufacturing, which supports its economic structure despite lower per capita output.
+LLM Calls: 5
+Tool Calls: 8
+Skill Activations: 1
+Tool Calls Detail:
+  - activate_skill(skill_name="country-comparison") -> Loaded skill: country-comparison
+
+---
+name: country-comparison
+description: Compare two or more countries across metrics
+---
+
+## When to Use
+- User asks to compare countries
+- Questions about which co
+  - country_lookup_tool(country="Japan", metric="gdp_trillion") -> The gdp trillion of Japan is 4.21 trillion USD
+  - country_lookup_tool(country="Germany", metric="gdp_trillion") -> The gdp trillion of Germany is 4.56 trillion USD
+  - country_lookup_tool(country="Japan", metric="population_million") -> The population million of Japan is 124.5 million people
+  - country_lookup_tool(country="Germany", metric="population_million") -> The population million of Germany is 83.3 million people
+  - calculator_tool(expression="4.21 / 124.5") -> Result: 0.0338
+  - calculator_tool(expression="4.56 / 83.3") -> Result: 0.0547
+  - country_kb_search_tool(query="Japan and Germany key economic and social factors comparing developed economies", top_k="2") -> [Japan] (relevance: 0.519) Japan has the third-largest automobile manufacturing industry in the world, home to Toyota, Honda, Nissan, and Suzuki.
+[Japan] (relevance: 0.530) Japan's literacy rate is ne
+Duration: 68782ms
+Status: SUCCESS
+========================================================================
+duration_ms: 76043
+status: success
+output:
+  [INFO] Task: comparison_japan_germany
+  [INFO] Question: Compare the GDP and population of Japan and Germany. Which country has higher GDP per capita?
+  [06/14/26 21:10:50] INFO     Loading faiss.                        loader.py:156
+  [06/14/26 21:10:52] INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 54741                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 21:11:09] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 21:11:25] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 54741)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "## Comparison: Japan vs Germany\n\n| Metric             | Japan          | Germany        |\n|--------------------|----------------|----------------|\n| GDP (trillion USD) | $4.21          | $4.56          |\n| Population (million) | 124.5         | 83.3           |\n| GDP per capita (million USD) | $0.0338       | $0.0547        |\n\n**Key Insight:**  \nGermany has a higher GDP per capita (~$54,700) than Japan (~$33,800), despite Japan having a larger total GDP and population. This reflects Germany's smaller population and strong industrial export economy. Japan is known for its high literacy rate and leading position in automobile manufacturing, which supports its economic structure despite lower per capita output.",
+    "framework": "hermes",
+    "pattern": "agent_with_mcp_tools_and_skills",
+    "llm_calls": 5,
+    "total_duration_ms": 68782,
+    "prompt_tokens": 7538,
+    "completion_tokens": 632,
+    "total_tokens": 8170,
+    "tool_calls": 8,
+    "skill_activations": 1,
+    "tools_used": [
+      "activate_skill",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "calculator_tool",
+      "calculator_tool",
+      "country_kb_search_tool"
+    ],
+    "cold_start_ms": 7003,
+    "peak_memory_mb": 54.83
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T15:41:25Z
+task: profile_brazil
+question: Give me a comprehensive profile of Brazil including key statistics and what makes it notable.
+expected_skill: country-profile
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #2 | 2026-06-14 21:11:56
+========================================================================
+Task: profile_brazil
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Give me a comprehensive profile of Brazil including key statistics and what makes it notable.
+Answer:
+# Brazil Country Profile
+
+## Key Statistics
+| Metric | Value |
+|--------|-------|
+| GDP | $2.19 trillion USD |
+| Population | 211.1 million |
+| Area | 8,358,140 sq km |
+| GDP per capita | $10,374 USD |
+| Population density | 0.025 people/sq km |
+
+## Notable Facts
+1. **Amazon Rainforest**: Brazil contains approximately 60% of the Amazon rainforest, the world's largest tropical forest and a critical carbon sink.
+2. **Biodiversity Leader**: Brazil has the most biodiversity of any country, with more species of plants, freshwater fish, and mammals than any other nation.
+
+## Summary
+Brazil is a vast South American nation renowned for its unparalleled biodiversity, expansive Amazon rainforest, and as the world's largest Portuguese-speaking country with a rich cultural heritage and significant economic influence in Latin America.
+LLM Calls: 4
+Tool Calls: 7
+Skill Activations: 1
+Tool Calls Detail:
+  - activate_skill(skill_name="country-profile") -> Loaded skill: country-profile
+
+---
+name: country-profile
+description: Build a single-country profile with stats and facts
+---
+
+## When to Use
+- "Tell me about [country]"
+- Country overview or fact she
+  - country_lookup_tool(country="Brazil", metric="gdp_trillion") -> The gdp trillion of Brazil is 2.19 trillion USD
+  - country_lookup_tool(country="Brazil", metric="population_million") -> The population million of Brazil is 211.1 million people
+  - country_lookup_tool(country="Brazil", metric="area_sq_km") -> The area sq km of Brazil is 8358140 square kilometers
+  - calculator_tool(expression="2.19 * 1000 / 211.1") -> Result: 10.3742
+  - calculator_tool(expression="211.1 / 8358.14") -> Result: 0.0253
+  - country_kb_search_tool(query="Brazil economy culture history geography notable achievements", top_k="3") -> [Brazil] (relevance: 0.545) Brazil contains approximately 60% of the Amazon rainforest, the world's largest tropical forest and a critical carbon sink.
+[Brazil] (relevance: 0.551) Brazil has the most 
+Duration: 28155ms
+Status: SUCCESS
+========================================================================
+duration_ms: 30463
+status: success
+output:
+  [INFO] Task: profile_brazil
+  [INFO] Question: Give me a comprehensive profile of Brazil including key statistics and what makes it notable.
+  [06/14/26 21:11:41] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 54762                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 21:11:45] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 21:11:55] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 54762)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "# Brazil Country Profile\n\n## Key Statistics\n| Metric | Value |\n|--------|-------|\n| GDP | $2.19 trillion USD |\n| Population | 211.1 million |\n| Area | 8,358,140 sq km |\n| GDP per capita | $10,374 USD |\n| Population density | 0.025 people/sq km |\n\n## Notable Facts\n1. **Amazon Rainforest**: Brazil contains approximately 60% of the Amazon rainforest, the world's largest tropical forest and a critical carbon sink.\n2. **Biodiversity Leader**: Brazil has the most biodiversity of any country, with more species of plants, freshwater fish, and mammals than any other nation.\n\n## Summary\nBrazil is a vast South American nation renowned for its unparalleled biodiversity, expansive Amazon rainforest, and as the world's largest Portuguese-speaking country with a rich cultural heritage and significant economic influence in Latin America.",
+    "framework": "hermes",
+    "pattern": "agent_with_mcp_tools_and_skills",
+    "llm_calls": 4,
+    "total_duration_ms": 28155,
+    "prompt_tokens": 5738,
+    "completion_tokens": 567,
+    "total_tokens": 6305,
+    "tool_calls": 7,
+    "skill_activations": 1,
+    "tools_used": [
+      "activate_skill",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "calculator_tool",
+      "calculator_tool",
+      "country_kb_search_tool"
+    ],
+    "cold_start_ms": 2060,
+    "peak_memory_mb": 54.25
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T15:41:56Z
+task: europe_gdp_analysis
+question: Analyze the GDP of European countries in the dataset. Which has the highest and what's the regional total?
+expected_skill: regional-analysis
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #3 | 2026-06-14 21:12:22
+========================================================================
+Task: europe_gdp_analysis
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Analyze the GDP of European countries in the dataset. Which has the highest and what's the regional total?
+Answer:
+# European GDP Analysis
+
+### Key Findings
+
+| Country | GDP (Trillion USD) |
+|---------|-------------------|
+| **Germany** | 4.56 |
+| United Kingdom | 3.42 |
+| France | 3.06 |
+| Italy | 2.32 |
+| Spain | 1.62 |
+
+### Summary
+
+- **Highest GDP**: Germany (4.56 trillion USD)
+- **Regional Total**: 14.98 trillion USD
+
+Germany's economic leadership aligns with its status as the EU's most populous country. The combined GDP of these five major European economies totals nearly 15 trillion USD, highlighting Europe's significant global economic influence.
+LLM Calls: 5
+Tool Calls: 8
+Skill Activations: 1
+Tool Calls Detail:
+  - activate_skill(skill_name="country-comparison") -> Loaded skill: country-comparison
+
+---
+name: country-comparison
+description: Compare two or more countries across metrics
+---
+
+## When to Use
+- User asks to compare countries
+- Questions about which co
+  - country_lookup_tool(country="United Kingdom", metric="gdp_trillion") -> The gdp trillion of United Kingdom is 3.42 trillion USD
+  - country_lookup_tool(country="Germany", metric="gdp_trillion") -> The gdp trillion of Germany is 4.56 trillion USD
+  - country_lookup_tool(country="France", metric="gdp_trillion") -> The gdp trillion of France is 3.06 trillion USD
+  - country_lookup_tool(country="Italy", metric="gdp_trillion") -> The gdp trillion of Italy is 2.32 trillion USD
+  - country_lookup_tool(country="Spain", metric="gdp_trillion") -> The gdp trillion of Spain is 1.62 trillion USD
+  - calculator_tool(expression="3.42 + 4.56 + 3.06 + 2.32 + 1.62") -> Result: 14.98
+  - country_kb_search_tool(query="Comparative economic analysis of United Kingdom, Germany, France, Italy and Spain GDP strengths and regional economic context", top_k="3") -> [Germany] (relevance: 0.577) Germany is the most populous country in the European Union and operates as a federal parliamentary republic.
+[Italy] (relevance: 0.591) Italy has the oldest population in 
+Duration: 24473ms
+Status: SUCCESS
+========================================================================
+duration_ms: 26751
+status: success
+output:
+  [INFO] Task: europe_gdp_analysis
+  [INFO] Question: Analyze the GDP of European countries in the dataset. Which has the highest and what's the regional total?
+  [06/14/26 21:12:09] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 54781                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 21:12:12] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 21:12:22] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 54781)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "# European GDP Analysis\n\n### Key Findings\n\n| Country | GDP (Trillion USD) |\n|---------|-------------------|\n| **Germany** | 4.56 |\n| United Kingdom | 3.42 |\n| France | 3.06 |\n| Italy | 2.32 |\n| Spain | 1.62 |\n\n### Summary\n\n- **Highest GDP**: Germany (4.56 trillion USD)\n- **Regional Total**: 14.98 trillion USD\n\nGermany's economic leadership aligns with its status as the EU's most populous country. The combined GDP of these five major European economies totals nearly 15 trillion USD, highlighting Europe's significant global economic influence.",
+    "framework": "hermes",
+    "pattern": "agent_with_mcp_tools_and_skills",
+    "llm_calls": 5,
+    "total_duration_ms": 24473,
+    "prompt_tokens": 7733,
+    "completion_tokens": 630,
+    "total_tokens": 8363,
+    "tool_calls": 8,
+    "skill_activations": 1,
+    "tools_used": [
+      "activate_skill",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "calculator_tool",
+      "country_kb_search_tool"
+    ],
+    "cold_start_ms": 2041,
+    "peak_memory_mb": 54.25
+  }
+
+--------------------------------------------------------------------------------
+run_timestamp: 2026-06-14T15:42:22Z
+task: formatted_comparison_report
+question: Create a professionally formatted report comparing the United States and China across all metrics.
+expected_skill: report-formatting
+model: qwen3.5:35b-a3b-coding-nvfp4
+
+========================================================================
+Experiment #4 | 2026-06-14 21:12:55
+========================================================================
+Task: formatted_comparison_report
+Model: qwen3.5:35b-a3b-coding-nvfp4
+Question: Create a professionally formatted report comparing the United States and China across all metrics.
+Answer:
+# Comparative Analysis: United States vs. China
+
+## Overview Metrics
+
+| Metric | United States | China |
+|--------|---------------|-------|
+| **GDP (Trillions USD)** | $27.29 | $18.27 |
+| **Population (Millions)** | 336.8 | 1,410.7 |
+| **Area (Thousand km²)** | 9.15 | 9.39 |
+| **GDP per Capita (USD)** | $81,027 | $12,951 |
+| **Population Density (per km²)** | 0.037 | 0.150 |
+
+## Key Insights
+
+**Economic Power**: The United States leads with a GDP of $27.29 trillion, significantly outpacing China's $18.27 trillion. The US economy generates nearly 50% more total economic output.
+
+**Population Scale**: China's massive population of 1.41 billion dwarfs the US population of 337 million, making China nearly 4.2 times more populous.
+
+**GDP Per Capita Advantage**: The US enjoys a dramatically higher GDP per capita ($81,027) compared to China ($12,951), indicating significantly higher average income and living standards in the US.
+
+**Geographic Similarity**: Both countries occupy vast territories of similar size (US: 9.15M km², China: 9.39M km²), though China's population is concentrated more densely.
+
+**Qualitative Context**: China operates as a single-party socialist republic with the world's oldest continuous civilization (over 3,500 years of recorded history), while the US maintains a democratic constitutional republic with significant innovation and cultural influence globally.
+LLM Calls: 5
+Tool Calls: 12
+Skill Activations: 1
+Tool Calls Detail:
+  - activate_skill(skill_name="country-comparison") -> Loaded skill: country-comparison
+
+---
+name: country-comparison
+description: Compare two or more countries across metrics
+---
+
+## When to Use
+- User asks to compare countries
+- Questions about which co
+  - country_lookup_tool(country="United States", metric="gdp_trillion") -> The gdp trillion of United States is 27.29 trillion USD
+  - country_lookup_tool(country="China", metric="gdp_trillion") -> The gdp trillion of China is 18.27 trillion USD
+  - country_lookup_tool(country="United States", metric="population_million") -> The population million of United States is 336.8 million people
+  - country_lookup_tool(country="China", metric="population_million") -> The population million of China is 1410.7 million people
+  - country_lookup_tool(country="United States", metric="area_sq_km") -> The area sq km of United States is 9147420 square kilometers
+  - country_lookup_tool(country="China", metric="area_sq_km") -> The area sq km of China is 9388210 square kilometers
+  - calculator_tool(expression="27.29 / 336.8 * 1000000") -> Result: 81027.3159
+  - calculator_tool(expression="18.27 / 1410.7 * 1000000") -> Result: 12951.0172
+  - calculator_tool(expression="336.8 / 9147420 * 1000") -> Result: 0.0368
+  - calculator_tool(expression="1410.7 / 9388210 * 1000") -> Result: 0.1503
+  - country_kb_search_tool(query="United States China GDP economy political system technology innovation cultural influence comparison", top_k="3") -> [China] (relevance: 0.589) China is the world's most populous country and operates under a single-party socialist republic led by the Communist Party.
+[South Korea] (relevance: 0.609) South Korea has 
+Duration: 30249ms
+Status: SUCCESS
+========================================================================
+duration_ms: 32631
+status: success
+output:
+  [INFO] Task: formatted_comparison_report
+  [INFO] Question: Create a professionally formatted report comparing the United States and China across all metrics.
+  [06/14/26 21:12:38] INFO     Loading faiss.                        loader.py:156
+                      INFO     Successfully loaded faiss.            loader.py:158
+                      INFO     MilvusLite server started for  server_manager.py:77
+                               /path/to/dev/lear                     
+                               nings-data/agentic_frameworks_                     
+                               exploration/_shared/vector_db/                     
+                               country_kb.db on port 54800                        
+  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [06/14/26 21:12:42] WARNING  Warning: You are sending               _http.py:904
+                               unauthenticated requests to the HF                 
+                               Hub. Please set a HF_TOKEN to enable               
+                               higher rate limits and faster                      
+                               downloads.                                         
+  [06/14/26 21:12:55] INFO     MilvusLite server stopped for server_manager.py:101
+                               /path/to/dev/lea                      
+                               rnings-data/agentic_framework                      
+                               s_exploration/_shared/vector_                      
+                               db/country_kb.db (port 54800)                      
+  [INFO] Result logged to logs.txt
+  {
+    "answer": "# Comparative Analysis: United States vs. China\n\n## Overview Metrics\n\n| Metric | United States | China |\n|--------|---------------|-------|\n| **GDP (Trillions USD)** | $27.29 | $18.27 |\n| **Population (Millions)** | 336.8 | 1,410.7 |\n| **Area (Thousand km\u00b2)** | 9.15 | 9.39 |\n| **GDP per Capita (USD)** | $81,027 | $12,951 |\n| **Population Density (per km\u00b2)** | 0.037 | 0.150 |\n\n## Key Insights\n\n**Economic Power**: The United States leads with a GDP of $27.29 trillion, significantly outpacing China's $18.27 trillion. The US economy generates nearly 50% more total economic output.\n\n**Population Scale**: China's massive population of 1.41 billion dwarfs the US population of 337 million, making China nearly 4.2 times more populous.\n\n**GDP Per Capita Advantage**: The US enjoys a dramatically higher GDP per capita ($81,027) compared to China ($12,951), indicating significantly higher average income and living standards in the US.\n\n**Geographic Similarity**: Both countries occupy vast territories of similar size (US: 9.15M km\u00b2, China: 9.39M km\u00b2), though China's population is concentrated more densely.\n\n**Qualitative Context**: China operates as a single-party socialist republic with the world's oldest continuous civilization (over 3,500 years of recorded history), while the US maintains a democratic constitutional republic with significant innovation and cultural influence globally.",
+    "framework": "hermes",
+    "pattern": "agent_with_mcp_tools_and_skills",
+    "llm_calls": 5,
+    "total_duration_ms": 30249,
+    "prompt_tokens": 8295,
+    "completion_tokens": 989,
+    "total_tokens": 9284,
+    "tool_calls": 12,
+    "skill_activations": 1,
+    "tools_used": [
+      "activate_skill",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "country_lookup_tool",
+      "calculator_tool",
+      "calculator_tool",
+      "calculator_tool",
+      "calculator_tool",
+      "country_kb_search_tool"
+    ],
+    "cold_start_ms": 2127,
+    "peak_memory_mb": 54.28
+  }
+

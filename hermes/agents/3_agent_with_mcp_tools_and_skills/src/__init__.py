@@ -1,0 +1,1 @@
+"""Hermes Pattern 3 package."""
