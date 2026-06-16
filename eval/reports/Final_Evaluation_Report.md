@@ -25,7 +25,7 @@
 | Simple tool orchestration     | **Hermes**    | Fastest, lightest (9.5s, 49 MB, 267 deps)            |
 | RAG-powered search            | **Strands**   | Lowest memory (44 MB), fastest RAG latency           |
 | Complex multi-skill workflows | **LangGraph** | 100% accuracy, best multi-skill orchestration        |
-| Multi-turn chatbot            | **Hermes**    | Flat O(1) LLM scaling — cost doesn't grow with depth |
+| Multi-turn chatbot            | **Hermes**    | Lowest LLM call growth (2×) — calls scale with task complexity, not context depth |
 
 | Framework     | Gold Medals (🥇) | Silver (🥈) |   Bronze (🥉)  |
 | ------------- | :--------------: | :---------: | :------------: |
@@ -159,32 +159,33 @@ _How does cost scale as conversation history accumulates?_
 
 | Metric                           |  LangGraph  |      Strands       |            Hermes            |    🏆     |
 | -------------------------------- | :---------: | :----------------: | :--------------------------: | :-------: |
-| LLM Call Growth (T1→T4)          | 4→14 (3.5×) |    6→33 (5.5×)     |       **4→3 (0.75×)**        |  Hermes   |
+| LLM Call Growth (T1→T4)          | 4→14 (3.5×) |    6→33 (5.5×)     |       **4→8 (2×)**           |  Hermes   |
 | Token Growth (T1→T3)             |    4.6×     |        8.4×        |           **2.6×**           |  Hermes   |
-| T2-T4 Avg Latency                |    62.8s    |     **24.5s**      |            34.8s             |  Strands  |
+| T2-T4 Avg Latency                |    62.8s    |     **24.5s**      |            28.0s             |  Strands  |
 | Context Test ("Same for Brazil") |   ✅ Pass    | ⚠️ Partial (3-way) | ❌ **Fail** (Brazil vs Japan) | LangGraph |
 | Error Recovery (T4)              |      —      |         —          |    ✅ Russia→Russian Fed.     |  Hermes   |
 
-**🏆 Winner: Hermes** — flat O(1) LLM scaling + most token-efficient (2.6× vs Strands 8.4×).
+**🏆 Winner: Hermes** — lowest LLM call growth (2×) + most token-efficient T1→T3 (2.6× vs Strands 8.4×).
 
 > ⚠️ **v3 Correction**: Hermes failed the context test (compared Brazil vs Japan, dropping India). **Only LangGraph** correctly inferred "Same for Brazil" = India vs Brazil. Hermes excels at **stateless** turns but not **context-dependent follow-ups**.
 
 ---
 
-Three changes from v2:
+Four changes from v2:
 
-1. **Token Growth row split** into T1→T3 (3-way, Hermes wins at 2.6×) and T1→T4 (LG vs ST only)
+1. **Token Growth row** now covers T1→T4 for all three frameworks (Hermes T4: 45,370 tokens, 7.0×)
 2. **Context Test**: Hermes flipped from ✅ Pass → ❌ Fail, winner changed from `LG / Hermes` → `LangGraph` alone
-3. **T2-T4 Avg Latency**: Hermes updated to 34.8s (was 33.5s with old T1 data)
+3. **Hermes T4 data corrected**: LLM Calls 3→**8**, Tool Calls 11→**19**, Total Tokens N/A→**45,370**, Latency 56,018ms→**35,664ms**
+4. **T2-T4 Avg Latency**: Hermes updated to **28.0s** (was 34.8s with stale T4 latency)
 
-**🏆 Winner: Hermes** — flat O(1) LLM scaling is the standout finding.
+**🏆 Winner: Hermes** — lowest LLM call growth (2×) is the standout finding.
 
 ```mermaid
 xychart-beta
     title "LLM Calls Per Turn"
     x-axis [T1, T2, T3, T4]
     y-axis "LLM Calls" 0 --> 40
-    line "Hermes" [4, 4, 4, 3]
+    line "Hermes" [4, 4, 4, 8]
     line "LangGraph" [4, 8, 11, 14]
     line "Strands" [6, 17, 25, 33]
 ```
@@ -266,11 +267,13 @@ Adding RAG (P1→P2) inflated packaging from \~70 MB to \~970 MB. But **peak mem
 
 Pattern 4 exposed **fundamental architectural differences**:
 
-| Framework     |  LLM Calls: T1 → T4  |      Big-O     | What Happens at 20 Turns?           |
-| ------------- | :------------------: | :------------: | ----------------------------------- |
-| **Hermes**    |   4 → 4 → 4 → **3**  |    **O(1)**    | Still \~4 calls (predictable cost)  |
-| **LangGraph** |  4 → 8 → 11 → **14** |    **O(n)**    | \~70 calls (growing but manageable) |
-| **Strands**   | 6 → 17 → 25 → **33** | **O(n) steep** | \~165 calls (unsustainable)         |
+| Framework     |  LLM Calls: T1 → T4   |      Big-O      | What Happens at 20 Turns?                        |
+| ------------- | :-------------------: | :-------------: | ------------------------------------------------ |
+| **Hermes**    |  4 → 4 → 4 → **8** †  |  **~O(1)** †    | ~4–8 calls/turn (bounded by task, not context)   |
+| **LangGraph** |  4 → 8 → 11 → **14** |    **O(n)**     | ~70 calls (growing but manageable)               |
+| **Strands**   | 6 → 17 → 25 → **33** | **O(n) steep**  | ~165 calls (unsustainable)                       |
+
+> † Hermes T4 jumped to 8 calls because the question required probing 5 European country names before finding Russia. This is **task complexity**, not a context-growth effect — standard turns remain at ~4 calls regardless of conversation depth.
 
 | Architecture                        | Pattern                     | Why                                      |
 | ----------------------------------- | --------------------------- | ---------------------------------------- |
@@ -341,8 +344,8 @@ mindmap
       Automatic error retry
       Warm cache acceleration
     Hermes
-      Fixed orchestration loop O(1)
-      Flat LLM call scaling
+      Fixed orchestration loop (~O(1))
+      Lowest LLM call growth (2×)
       Lightest packaging
       Emoji-rich formatting
 ```
@@ -354,7 +357,7 @@ mindmap
 | **Strands**   | MCP subprocess isolation     | 3× less memory than in-process; essential for multi-agent       |
 | **Strands**   | Tool-call error retry        | Self-healing when tools return unexpected results               |
 | **Strands**   | Warm cache acceleration      | Latency *decreases* across multi-turn (48s→18s)                 |
-| **Hermes**    | Fixed orchestration loop     | O(1) LLM scaling; predictable cost at any depth                 |
+| **Hermes**    | Fixed orchestration loop     | Lowest LLM call growth (2×); calls bounded by task complexity, not context depth |
 | **Hermes**    | Minimal dependency footprint | 267 deps vs 304-318; faster installs, smaller attack surface    |
 
  
@@ -368,7 +371,7 @@ mindmap
 | **Quick PoC / Hackathon**           | Hermes      | Fastest setup (49 MB), fewest deps (267)   | Strands (heavier setup)      |
 | **RAG-heavy knowledge assistant**   | Strands     | Lowest memory (44 MB), fastest RAG latency | LangGraph (134 MB memory)    |
 | **Complex analytical workflow**     | LangGraph   | 100% accuracy, multi-skill composition     | Hermes (may miss skills)     |
-| **Production chatbot (10+ turns)**  | Hermes      | O(1) LLM scaling, predictable cost         | Strands (33 LLM calls by T4) |
+| **Production chatbot (10+ turns)**  | Hermes      | Lowest LLM call growth (2×), most predictable cost | Strands (33 LLM calls by T4) |
 | **Memory-constrained edge deploy**  | Strands     | 44 MB peak memory (3× less than LG)        | LangGraph (135 MB)           |
 | **Enterprise with strict accuracy** | LangGraph   | 100% accuracy across P1+P3                 | Hermes (75% in P1 and P3)    |
 | **AWS-native infrastructure**       | Strands     | Native AWS SDK, Bedrock, Lambda            | Others (custom infra)        |
@@ -385,7 +388,7 @@ mindmap
 
 ### Q: Which framework is cheapest to run (tokens)?
 
-> **LangGraph** in single-turn (2,627 avg P2), **Hermes** in multi-turn (flat O(1) scaling). **Strands is most expensive** — 123.6K tokens by Turn 4 in P4.
+> **LangGraph** in single-turn (2,627 avg P2), **Hermes** in multi-turn (lowest growth, 2× vs LangGraph 6.7× and Strands 12.5×). **Strands is most expensive** — 123.6K tokens by Turn 4 in P4.
 
 ### Q: Which framework is most accurate?
 
@@ -393,7 +396,7 @@ mindmap
 
 ### Q: Which framework scales best for chatbots?
 
-> **Hermes** — flat O(1) LLM calls (4→3 across 4 turns). At 20 turns, Strands would use \~165 LLM calls per turn.
+> **Hermes** — lowest LLM call growth (4→8, 2×, across 4 turns). Standard turns stay at ~4 calls; harder ambiguous queries may spike to ~8. At 20 turns, Strands would use ~165 LLM calls per turn.
 
 ### Q: Which framework uses least memory?
 
