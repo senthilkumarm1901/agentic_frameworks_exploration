@@ -12,7 +12,7 @@
 | **Conversation**     | 4-turn sequential with cumulative context                 |
 | **Diagnostic Tests** | T3: Context memory; T4: Knowledge reasoning               |
 
-> **Note**: Hermes E#1 had MilvusLite connection errors (3 failed `kb_search` → 10 LLM calls). E#2 (clean restart) used as T1. This shows errors can break Hermes's flat scaling. 
+> **Note**: Hermes E#1 had MilvusLite connection errors (3 failed `kb_search` → 10 LLM calls). E#2 (clean restart) used as T1. This shows errors can inflate Hermes's LLM call count beyond its normal 4–8 range. 
 
 ---
 
@@ -50,10 +50,10 @@
 
 |Metric|LangGraph|Strands|Hermes|Best|
 |---|---|---|---|---|
-|Latency (ms)|76,433|**24,254**|56,018|Strands|
-|LLM Calls|14|33|**3**|Hermes|
-|Tool Calls|36|35|**11**|Hermes|
-|Total Tokens|**50,593**|123,606|N/A|LangGraph|
+|Latency (ms)|76,433|**24,254**|35,664|Strands|
+|LLM Calls|14|33|**8**|Hermes|
+|Tool Calls|36|35|**19**|Hermes|
+|Total Tokens|50,593|123,606|**45,370**|Hermes|
 |Country Chosen|🇩🇪 Germany|🇩🇪 Germany|🇷🇺 Russia + error recovery|—|
 
 > ⚠️ Hermes T3 compared **Brazil vs Japan** — dropped India entirely. 
@@ -69,19 +69,19 @@
 |T1|4|6|4|
 |T2|8|17|4|
 |T3|11|25|4|
-|T4|14|33|**3**|
-|**Growth**|4→14 (**3.5×**)|6→33 (**5.5×**)|4→3 (**0.75×**)|
+|T4|14|33|**8**|
+|**Growth**|4→14 (**3.5×**)|6→33 (**5.5×**)|4→8 (**2×**)|
 
-### Token Growth (Now 3-Way for T1–T3!)
+### Token Growth (T1–T4 Full Comparison)
 
 |Turn|LangGraph|Strands|Hermes|LG ×|ST ×|HM ×|
 |---|:-:|:-:|:-:|:-:|:-:|:-:|
 |T1|7,521|9,906|6,499|1.0×|1.0×|1.0×|
 |T2|22,420|44,980|10,926|3.0×|4.5×|1.7×|
 |T3|34,797|83,562|16,590|4.6×|8.4×|**2.6×**|
-|T4|50,593|123,606|N/A|6.7×|12.5×|—|
+|T4|50,593|123,606|**45,370**|6.7×|12.5×|7.0×|
 
-> **New with Hermes tokens**: T1→T3 growth is **2.6×** (6.5K→16.6K) vs LangGraph 4.6× vs Strands 8.4×. **Hermes is the most token-efficient.** By T3, Strands uses **5× more tokens** than Hermes. 
+> **T1→T3** (same-complexity tasks): Hermes is the most token-efficient at **2.6×** vs LangGraph 4.6× vs Strands 8.4×. By T3, Strands uses **5× more tokens** than Hermes. **T1→T4**: LangGraph 6.7×, Hermes 7.0×, Strands 12.5× — Hermes T4 cost was driven by task complexity (5-country probe to find Russia), not by context growth. 
 
 ### Prompt:Completion Ratio
 
@@ -90,7 +90,7 @@
 |T1|11.6:1|16.1:1|**10.4:1**|
 |T2|3.9:1|20.5:1|12.4:1|
 |T3|5.3:1|22.2:1|13.0:1|
-|T4|6.4:1|26.5:1|N/A|
+|T4|6.4:1|26.5:1|**23.8:1**|
 
 ### Latency Growth
 
@@ -132,10 +132,10 @@
 |#|Category|Metric|Winner|Evidence|
 |---|---|---|---|---|
 |1|Performance|T1 Latency|**Strands**|48.8s|
-|2|Performance|Avg Latency T2-T4|**Hermes**|34.8s avg|
-|3|Scaling|LLM Call Stability|**Hermes**|4→4→4→3 O(1)|
+|2|Performance|Avg Latency T2-T4|**Hermes**|28.0s avg|
+|3|Scaling|LLM Call Stability|**Hermes**|4→4→4→8 (2×, lowest)|
 |4|Scaling|Token Growth T1-T3|**Hermes**|2.6× vs LG 4.6×, ST 8.4×|
-|5|Scaling|Tool Call Efficiency|**Hermes**|7→12→12→11|
+|5|Scaling|Tool Call Efficiency|**Hermes**|7→12→12→19|
 |6|Context|"Same for Brazil"|**LangGraph**|Only correct answer|
 |7|Context|Knowledge Reasoning|**Tie**|All defensible|
 |8|Quality|Answer Formatting|**Tie**|All well-formatted|
@@ -178,7 +178,7 @@
 
 |||
 |---|---|
-|✅|**Flat O(1) LLM scaling** (4→3); **most token-efficient** (2.6× T1→T3); error recovery|
+|✅|**Lowest LLM call growth** (4→8, 2×); **most token-efficient** (2.6× T1→T3); error recovery|
 |❌|❌ **Failed context test** (Brazil vs Japan); 0 skills on T4; MilvusLite errors broke E#1|
 |🎯|**Stateless chatbots** — each turn self-contained (NOT context-dependent follow-ups)|
 
@@ -188,7 +188,7 @@
 
 |Rank|Framework|Score|Key Differentiator|
 |---|---|---|---|
-|🥇|**Hermes**|5/11|Flat O(1) scaling + most token-efficient. But context failure is a production risk.|
+|🥇|**Hermes**|5/11|Lowest LLM call growth (2×) + most token-efficient T1–T3. But context failure is a production risk.|
 |🥈|**LangGraph**|3/11|**Only context-correct framework**. Linear O(n) is the trade-off for reliability.|
 |🥉|**Strands**|3/11|Fastest warm turns (18s). But 33 LLM calls + 124K tokens + partial context.|
 
