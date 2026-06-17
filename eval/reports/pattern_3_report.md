@@ -112,9 +112,10 @@
 
 ---
 
-###### E##4: US vs China Formatted Report
+###### Experiment 4: US vs China Formatted Report
 
-**Expected Skill:** `report-formatting` | **Complexity:** Very Hard
+- Question: Professional formatted report comparing US and China across all metrics
+- **Expected Skills:** `country-comparison` & `report-formatting` | **Complexity:** Very Hard
 
 |Metric|LangGraph|Strands|Hermes|Best|
 |---|---|---|---|---|
@@ -127,7 +128,10 @@
 |Peak Memory (MB)|134.91|**44.24**|54.28|Strands|
 |Answer Quality|✅ Exec summary + table + insights + sources|✅ Summary + table + insights + sources|✅ Metrics table + insights (only 1 skill)|—|
 
-> **Most complex task** — LangGraph: 18 tools + 8 LLM + **2 skills**; Strands: 15 tools + 11 LLM + **2 skills**. **Hermes used only 1 skill** (`country-comparison`) — didn't activate `report-formatting`. Despite this, Hermes was **fastest** (30.2s) and used **2.5× fewer tokens** than Strands (9,284 vs 23,024). 
+> **Most complex task** 
+> * LangGraph: 18 tools + 8 LLM + **2 skills**; 
+> * Strands: 15 tools + 11 LLM + **2 skills**.
+> * **Hermes used only 1 skill** (`country-comparison`) — didn't activate `report-formatting`
 
 ---
 
