@@ -253,7 +253,7 @@ save_summary(summary_response.choices[0].message.content, self.turn_count)  # wr
 
 The key architectural contrast across all four Hermes agents vs. LangGraph:
 
-| | LangGraph | Hermes |
+| | LangGraph | Hermes-like |
 |---|---|---|
 | Loop mechanism | Compiled `StateGraph` conditional edge | Plain `for _ in range(max_iterations)` |
 | Exit condition | `should_continue()` routing function | `if not msg.tool_calls: break` |
@@ -262,3 +262,17 @@ The key architectural contrast across all four Hermes agents vs. LangGraph:
 | MCP session | New per `agent.ainvoke()` | P1–P3: new per call; P4: persistent singleton |
 | In-session history | `MemorySaver` checkpointer | `self.messages` list appended directly |
 | Cross-session memory | LLM summary injected at graph creation | LLM summary injected at `initialize()` |
+
+
+---
+
+| Feature                | "Hermes-like" (implemented here)        | Real `hermes-agent`                                       |
+| ---------------------- | --------------------------------------- | --------------------------------------------------------- |
+| **Memory layer 1**     | Flat `session.json`                     | Honcho (user modeling, persona tracking)                  |
+| **Memory layer 2**     | Rolling LLM summary                     | SQLite **FTS5** session search                            |
+| **Memory layer 3**     | —                                       | Procedural `MEMORY.md` + `SOUL.md`                        |
+| **Skill activation**   | Manual `if fn_name == "activate_skill"` | Auto-discovery from `~/.hermes/skills/`                   |
+| **Skill writing**      | Read-only                               | Agent can **write/update** SKILL.md itself                |
+| **History management** | Full append                             | Honcho compression + FTS retrieval per turn               |
+| **Tool routing**       | Manual dispatch                         | Library-managed                                           |
+| **System prompt**      | Static template                         | Built dynamically from MEMORY.md + retrieved Honcho facts |
